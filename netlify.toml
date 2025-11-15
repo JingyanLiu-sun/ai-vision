@@ -1,0 +1,9 @@
+[build]
+  command = "node scripts/generate-sitemap-rss.mjs && next build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "20"
