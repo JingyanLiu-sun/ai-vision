@@ -2,8 +2,8 @@ import React from 'react';
 import { useI18n } from "@/app/i18n/client";
 
 const Modal = ({ isOpen, onClose, children, title }) => {
-  if (!isOpen) return null;
   const { t } = useI18n();
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" data-testid="modal-overlay">

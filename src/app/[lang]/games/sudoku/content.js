@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { RefreshCw, Eye, EyeOff } from 'lucide-react';
 import Modal from '@/app/components/Modal';
 import { useI18n } from "@/app/i18n/client";
@@ -92,9 +92,25 @@ const SudokuGame = () => {
   
   const inputRef = useRef(null);
 
+  const initializeGame = useCallback(() => {
+    let newSolution = Array(9).fill().map(() => Array(9).fill(0));
+    generateSolution(newSolution);
+    setSolution(newSolution);
+    let newPuzzle = generatePuzzle(newSolution, difficulties[difficulty]);
+    setBoard(newPuzzle);
+    setMistakes(0);
+    setTimer(0);
+    setIsRunning(true);
+    setShowHints(false);
+    setHistory([]);
+    setErrorCells([]);
+    setSelectedCell(null);
+    setLastErrorCell(null);
+  }, [difficulty, difficulties]);
+
   useEffect(() => {
     initializeGame();
-  }, [difficulty]);
+  }, [initializeGame]);
 
   useEffect(() => {
     let interval;
@@ -111,22 +127,6 @@ const SudokuGame = () => {
       inputRef.current.focus();
     }
   }, [selectedCell]);
-
-  const initializeGame = () => {
-    let newSolution = Array(9).fill().map(() => Array(9).fill(0));
-    generateSolution(newSolution);
-    setSolution(newSolution);
-    let newPuzzle = generatePuzzle(newSolution, difficulties[difficulty]);
-    setBoard(newPuzzle);
-    setMistakes(0);
-    setTimer(0);
-    setIsRunning(true);
-    setShowHints(false);
-    setHistory([]);     // Reset history
-    setErrorCells([]);  // Reset error cells
-    setSelectedCell(null);  // Reset selected cell
-    setLastErrorCell(null);
-  };
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -314,12 +314,12 @@ const SudokuGame = () => {
     ));
   };
 
-  const difficulties = {
+  const difficulties = useMemo(() => ({
     [t('easy')]: 65,
     [t('medium')]: 50,
     [t('hard')]: 35,
     [t('expert')]: 20
-  };
+  }), [t]);
 
   return (
     <div className="flex flex-col lg:flex-row">

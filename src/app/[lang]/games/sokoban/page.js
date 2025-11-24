@@ -49,3 +49,4 @@ export default async function SokobanPage(props) {
     </>
   );
 }
+export const dynamic = 'force-dynamic';

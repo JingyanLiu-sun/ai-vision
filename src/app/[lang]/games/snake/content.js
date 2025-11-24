@@ -302,7 +302,7 @@ const SnakeGame = () => {
     setTimeout(() => {
       setPowerUp((prev) => (prev && prev.x === position.x && prev.y === position.y ? null : prev));
     }, POWER_UP_CONFIG.DISPLAY_DURATION);
-  }, [gridWidth, gridHeight, enabledPowerUps, snake, foods, obstacles]);
+  }, [gridWidth, gridHeight, enabledPowerUps, snake, foods, obstacles, powerUp]);
 
   useEffect(() => {
     if (!isPlaying) {
@@ -441,6 +441,7 @@ const SnakeGame = () => {
     powerUp,
     ghostPowerCount,
     generateFoodRain,
+    isGolden,
   ]);
 
   const handleKeyPress = useCallback((e) => {
@@ -490,7 +491,7 @@ const SnakeGame = () => {
         clearInterval(timeInterval);
       }
     };
-  }, [isPlaying]);
+  }, [isPlaying, timeInterval]);
 
   const getButtonConfig = useCallback(() => {
     switch (gameStatus) {

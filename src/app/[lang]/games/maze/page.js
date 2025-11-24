@@ -48,3 +48,4 @@ export default async function MazePage(props) {
     </>
   );
 }
+export const dynamic = 'force-dynamic';

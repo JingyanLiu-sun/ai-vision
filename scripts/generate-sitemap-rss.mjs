@@ -4,8 +4,7 @@ import RSS from "rss";
 import matter from "gray-matter";
 
 // 修改导入语句
-import dynamicChartConfigsModule from '../src/app/[lang]/tools/chartrace/dynamicChartConfigs.js';
-const { dynamicChartConfigs } = dynamicChartConfigsModule;
+import { dynamicChartConfigs } from '../src/app/[lang]/tools/chartrace/dynamicChartConfigs.js';
 import documentTemplatesModule from '../src/app/[lang]/tools/gendocx/templates.js';
 const { documentTemplates } = documentTemplatesModule;
 

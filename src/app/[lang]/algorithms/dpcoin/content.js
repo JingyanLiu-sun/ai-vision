@@ -35,6 +35,7 @@ const CoinVisual = React.memo(({ value, isHighlighted, onDelete, showDelete = fa
     </div>
   );
 });
+CoinVisual.displayName = "CoinVisual";
 
 const TransitionStep = React.memo(({ transition, isBest }) => (
   <div className={`flex items-center p-1 rounded ${isBest ? "bg-green-100 border border-green-300" : ""}`}>
@@ -45,6 +46,7 @@ const TransitionStep = React.memo(({ transition, isBest }) => (
     <span className={`font-bold ${isBest ? "text-green-600" : ""}`}>{transition.numCoins}</span>
   </div>
 ));
+TransitionStep.displayName = "TransitionStep";
 
 const DPCoin = () => {
   const [amount, setAmount] = useState(11);

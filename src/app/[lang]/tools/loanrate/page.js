@@ -43,8 +43,10 @@ export default async function GenDocxPage(props) {
     <>
       <PageHeader lang={lang} pathname={`/${lang}/tools/loanrate`} />
       <LoanRateCalculator lang={lang} />
+      {/* Markdown is optional; skip if file missing to avoid build errors */}
       <BlogMarkdown lang={lang} directory="src/app/[lang]/tools/loanrate" />
       <CommonComments lang={lang} />
     </>
   );
 }
+export const dynamic = 'force-dynamic';

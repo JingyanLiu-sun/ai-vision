@@ -170,7 +170,7 @@ const ConsistentHashRing = () => {
     setVirtualNodes(newVirtualNodes);
     setKeys(updatedKeys);
     setNotification(t('nodeAdded', { nodeName, migratedCount }));
-  }, [nodes, virtualNodes, keys, colors, virtualNodeCount, createVirtualNodes, getNodeForKey]);
+  }, [nodes, virtualNodes, keys, colors, virtualNodeCount, createVirtualNodes, getNodeForKey, t]);
 
   const removeNode = useCallback(
     (nodeName) => {
@@ -201,7 +201,7 @@ const ConsistentHashRing = () => {
       setKeys(updatedKeys);
       setNotification(t('nodeRemoved', { nodeName, migratedCount }));
     },
-    [nodes, virtualNodes, keys, getNodeForKey]
+    [nodes, virtualNodes, keys, getNodeForKey, t]
   );
 
   const getKeysForNode = useCallback(
@@ -287,6 +287,7 @@ const ConsistentHashRing = () => {
       </Popover>
     );
   });
+  NodeCircle.displayName = "NodeCircle";
 
   const KeyPopover = React.memo(({ keyData }) => {
     const { x, y } = getNodePosition(keyData.position);
@@ -340,6 +341,7 @@ const ConsistentHashRing = () => {
       </Popover>
     );
   });
+  KeyPopover.displayName = "KeyPopover";
 
   const NodeSummary = React.memo(() => {
     return (
@@ -390,6 +392,7 @@ const ConsistentHashRing = () => {
       </div>
     );
   });
+  NodeSummary.displayName = "NodeSummary";
 
   const ControlPanel = React.memo(() => {
     return (
@@ -467,6 +470,7 @@ const ConsistentHashRing = () => {
       </div>
     );
   });
+  ControlPanel.displayName = "ControlPanel";
 
   // Main render
   return (

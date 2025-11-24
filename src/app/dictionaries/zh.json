@@ -333,8 +333,6 @@
   "moveSuccess": "移动成功！",
   "moveFailure": "移动失败。大圆盘不能放在小圆盘上。",
   "gameCompleted": "恭喜！您已经完成了汉诺塔问题！",
-  "clear_progress": "清除进度",
-  "progress_loaded": "已加载之前的进度",
   "binarysearchtree_title": "二叉搜索树可视化",
   "binarysearchtree_description": "可视化展示二叉搜索树算法。可以设置节点数量以及随机化方式，可以插入、查找和删除节点，理解二叉搜索树的工作原理。",
   "nodeCount": "节点数量 (1-50)",
@@ -896,6 +894,16 @@
       "title": "在线汉诺塔游戏-汉诺塔算法可视化",
       "description": "经典的汉诺塔游戏求解算法可视化，从任意初始状态开始，用递归算法找到后续步骤。可以调整圆盘数量，选择手动或自动模式，获取提示，切换模式，源码开放。",
       "keywords": "汉诺塔,汉诺塔游戏,在线汉诺塔可视化,汉诺塔递归算法"
+    },
+    "intervalscheduling": {
+      "title": "贪心算法：区间调度",
+      "description": "通过结束时间排序的贪心策略，选择最多的不重叠区间。可视化时间轴展示选择过程，支持逐步执行与高亮标注。",
+      "keywords": "贪心算法, 区间调度, 活动选择, 算法可视化"
+    },
+    "minimumspanningtree": {
+      "title": "贪心算法：最小生成树（Kruskal/Prim）",
+      "description": "采用 Kruskal（并查集）或 Prim 算法，按权重选择边并避免成环，动态展示生成树的生长过程与交互选边。",
+      "keywords": "贪心算法, 最小生成树, Kruskal, Prim, 并查集, 算法可视化"
     },
     "binarysearchtree": {
       "title": "二叉搜索树可视化",

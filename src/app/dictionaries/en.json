@@ -333,8 +333,6 @@
   "moveSuccess": "Move successful!",
   "moveFailure": "Move failed. Larger disk cannot be placed on smaller disk.",
   "gameCompleted": "Congratulations! You have completed the Tower of Hanoi!",
-  "clear_progress": "Clear Progress",
-  "progress_loaded": "Previous progress loaded",
   "binarysearchtree_title": "Binary Search Tree Visualization",
   "binarysearchtree_description": "Visualize binary search tree algorithm. Can set number of nodes and randomization method, can insert, find and delete nodes, understand how binary search tree works.",
   "nodeCount": "Node Count (1-50)",
@@ -896,6 +894,16 @@
       "title": "Online Tower of Hanoi Game - Tower of Hanoi Algorithm Visualization",
       "description": "Online visualization of Tower of Hanoi game solution. Can set number of disks and movement speed, choose manual or automatic mode, get hints, switch modes, open source code.",
       "keywords": "Tower of Hanoi, Tower of Hanoi game, online Tower of Hanoi visualization, Tower of Hanoi recursive algorithm"
+    },
+    "intervalscheduling": {
+      "title": "Greedy: Interval Scheduling",
+      "description": "Greedy algorithm for selecting maximum non-overlapping intervals. Sort intervals by finish time and step through the selection with timeline visualization.",
+      "keywords": "Greedy, interval scheduling, activity selection, algorithm visualization"
+    },
+    "minimumspanningtree": {
+      "title": "Greedy: Minimum Spanning Tree (Kruskal/Prim)",
+      "description": "Visualize MST via Kruskal (union-find) and Prim. Interactively select edges by weight and observe spanning tree growth while avoiding cycles.",
+      "keywords": "Greedy, MST, Kruskal, Prim, union-find, algorithm visualization"
     },
     "binarysearchtree": {
       "title": "Binary Search Tree Visualization",

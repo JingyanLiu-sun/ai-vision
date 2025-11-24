@@ -9,7 +9,6 @@ import FileUploadBox from '@/app/components/FileUploadBox';
 import { useI18n } from "@/app/i18n/client";
 import Modal from '@/app/components/Modal';
 import Link from 'next/link';
-import { SideAdComponent } from "@/app/components/AdComponent";
 import numfmt from 'numfmt';
 
 export default function GenDocx() {
@@ -382,7 +381,7 @@ export default function GenDocx() {
       </div>
 
       <div className="hidden mt-4 md:relative md:block w-full bg-gray-100">
-        <SideAdComponent format='horizontal'/>
+        {/* ads removed */}
       </div>
 
       {excelHeaders.length > 0 && (

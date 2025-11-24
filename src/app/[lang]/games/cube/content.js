@@ -6,7 +6,7 @@ import RubiksCube from "./RubiksCube";
 import { useState } from "react";
 import * as THREE from 'three';
 import { useI18n } from "@/app/i18n/client";
-import { SideAdComponent } from "@/app/components/AdComponent";
+// ads removed
 
 export default function CubeGame() {
   const [currentMove, setCurrentMove] = useState(null);
@@ -93,9 +93,7 @@ export default function CubeGame() {
           >
             {t('reset')}
           </button>
-          <div className="hidden mt-4 md:relative md:block w-full bg-gray-100">
-            <SideAdComponent format='vertical'/>
-          </div>
+          {/* ads removed */}
         </div>
       </div>
     </div>

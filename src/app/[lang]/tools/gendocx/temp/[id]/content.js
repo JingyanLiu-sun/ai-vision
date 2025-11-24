@@ -9,6 +9,7 @@ import FileUploadBox from "@/app/components/FileUploadBox";
 import { useI18n } from "@/app/i18n/client";
 import Modal from "@/app/components/Modal";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function TemplateDocx({ lang, template }) {
   const { t } = useI18n();
@@ -43,7 +44,7 @@ export default function TemplateDocx({ lang, template }) {
       }
     }
     loadTemplate();
-  }, [template]);
+  }, [template, t]);
 
   // 清理预览 URL
   useEffect(() => {
@@ -278,14 +279,17 @@ export default function TemplateDocx({ lang, template }) {
             <div className="relative w-full h-[300px] md:h-[400px]">
               {template.previewImage ? (
                 <div className="h-full flex items-center justify-center">
-                  <img
+                  <Image
                     src={template.previewImage}
                     alt={t(template.previewImageAlt)}
+                    width={800}
+                    height={450}
                     className="max-w-full max-h-full object-contain p-4"
+                    unoptimized
                   />
                 </div>
               ) : (
-                <div className="flex items-center justify-center h-full">
+                <div className="flex items-center justify中心 h-full">
                   <p className="text-gray-500">{t("gendocx_no_preview")}</p>
                 </div>
               )}

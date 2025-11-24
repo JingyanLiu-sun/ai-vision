@@ -3,7 +3,6 @@ import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { CustomListbox } from "@/app/components/ListBox";
 import { useI18n } from "@/app/i18n/client";
 import { trackEvent, EVENTS, CATEGORIES } from '@/app/utils/analytics';
-import { SideAdComponent } from "@/app/components/AdComponent";
 
 const DISK_COLORS = [
   "#FF6B6B",
@@ -218,7 +217,8 @@ const HanoiTower = () => {
 
       return () => clearTimeout(timer);
     }
-  }, [mode, isPlaying, speed, disks, findNextMove, towersToConf, t]);
+    return undefined;
+  }, [isPlaying, speed, disks, mode, findNextMove, towersToConf, t]);
 
   const handleDragStart = (e, fromTower, diskIndex) => {
     if (mode !== "manual") return;
@@ -394,6 +394,7 @@ const HanoiTower = () => {
       </div>
     );
   });
+  Tower.displayName = "Tower";
 
   const Controls = React.memo(() => {
     const diskOptions = useMemo(() => Array.from({ length: MAX_DISKS - 1 }, (_, i) => i + 2), []);
@@ -411,13 +412,22 @@ const HanoiTower = () => {
                 from: disks,
                 to: newValue
               });
+              try {
+                localStorage.removeItem('hanoiTowerProgress');
+              } catch {}
+              setHasSavedProgress(false);
+              setIsPlaying(false);
+              setMode("manual");
               setDisks(newValue);
+              if (typeof window !== 'undefined') {
+                window.location.reload();
+              }
             }}
             options={diskOptions}
             disabled={isPlaying}
           />
         </div>
-        <div>
+        <div className="opacity-100">
           <label className="block text-sm font-medium text-gray-700">{t("speed")}</label>
           <input
             type="range"
@@ -496,6 +506,7 @@ const HanoiTower = () => {
       </div>
     );
   });
+  Controls.displayName = "Controls";
 
   return (
     <div className="flex flex-col">
@@ -510,9 +521,7 @@ const HanoiTower = () => {
         <Controls />
       </div>
 
-      <div className="hidden md:block md:w-4/5 w-full bg-gray-100">
-        <SideAdComponent format="horizontal" className="absolute inset-0" />
-      </div>
+      {/* ads removed */}
 
       {showLoadNotification && (
         <div className="fixed top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded shadow-lg z-50">

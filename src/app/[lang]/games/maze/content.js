@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { buildMaze } from "./lib/main";
 import {
   SHAPE_SQUARE,
@@ -44,7 +44,6 @@ import { useI18n } from "@/app/i18n/client";
 import { drawingSurfaces } from "./lib/drawingSurfaces";
 import usePersistentState from '@/app/components/PersistentState';
 import { trackEvent, EVENTS, CATEGORIES } from '@/app/utils/analytics';
-import { SideAdComponent } from "@/app/components/AdComponent";
 
 const MazeGame = () => {
   const { t } = useI18n();
@@ -95,7 +94,7 @@ const MazeGame = () => {
 
   useEffect(() => {
     generateMaze();
-  }, [windowSize]);
+  }, [windowSize, generateMaze]);
 
   const generateMaze = useCallback(
     async (isManual = false) => {
@@ -240,7 +239,7 @@ const MazeGame = () => {
     }
   };
 
-  const keyCodeToDirection = {
+  const keyCodeToDirection = useMemo(() => ({
     38: DIRECTION_NORTH, // Up 
     40: DIRECTION_SOUTH, // Down
     39: DIRECTION_EAST, // Right
@@ -254,9 +253,9 @@ const MazeGame = () => {
     80: DIRECTION_INWARDS, // P
     76: `${DIRECTION_OUTWARDS}_1`, // L
     186: `${DIRECTION_OUTWARDS}_0`, // ;
-  };
+  }), []);
 
-  const navigate = (direction, shift, alt) => {
+  const navigate = useCallback((direction, shift, alt) => {
     if (!playState || !direction) return;
 
     while (true) {
@@ -299,9 +298,9 @@ const MazeGame = () => {
     }
 
     maze.render();
-  };
+  }, [playState, maze, onMazeCompleted]);
 
-  const onMazeCompleted = () => {
+  const onMazeCompleted = useCallback(() => {
     const timeMs = Date.now() - playState.startTime;
     const time = formatTime(timeMs);
     const { startCell, endCell } = playState;
@@ -336,16 +335,16 @@ const MazeGame = () => {
       visitedCells,
       optimalPathLength,
     });
-  };
+  }, [playState, maze, t, formatTime]);
 
-  const padNum = (num) => (num < 10 ? `0${num}` : num);
+  const padNum = useCallback((num) => (num < 10 ? `0${num}` : num), []);
 
-  const formatTime = (millis) => {
+  const formatTime = useCallback((millis) => {
     const hours = Math.floor(millis / (1000 * 60 * 60));
     const minutes = Math.floor((millis % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((millis % (1000 * 60)) / 1000);
     return `${padNum(hours)}:${padNum(minutes)}:${padNum(seconds)}`;
-  };
+  }, [padNum]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -363,7 +362,7 @@ const MazeGame = () => {
     return () => {
       window.onkeydown = null;
     };
-  }, [playState, maze]);
+  }, [playState, maze, keyCodeToDirection, navigate]);
 
   const handleMouseMove = useCallback((event) => {
     if (!playState || !maze || !canvasRef.current) {
@@ -467,7 +466,7 @@ const MazeGame = () => {
         setModalOpen(true);
       }
     }
-  }, [maze, showingDistances]);
+  }, [maze, showingDistances, findStartAndEndCells, t]);
 
   const downloadMaze = useCallback(() => {
     if (!maze) return;
@@ -562,9 +561,7 @@ const MazeGame = () => {
             onDownload={downloadMaze}
             maze={maze}
           />
-          <div className="hidden mt-4 md:relative md:block w-full bg-gray-100">
-            <SideAdComponent/>
-          </div>
+          {/* ads removed */}
         </div>
       </div>
       <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>

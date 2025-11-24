@@ -30,6 +30,36 @@ async function PageHeader({ lang, pathname, title }) {
 
   const getBackLink = () => {
     const pathSegments = pathname.split("/").filter(Boolean);
+    const lang = pathSegments[0];
+    // expect paths like /{lang}/algorithms/{slug}
+    if (pathSegments[1] === "algorithms" && pathSegments.length >= 3) {
+      const slug = pathSegments[2];
+      const categoryMap = {
+        heap: "sorting",
+        binarysearchtree: "searching",
+        bfs_path: "graph",
+        dijkstra: "graph",
+        astar: "graph",
+        dpcoin: "dynamic-programming",
+        hanoitower: "dynamic-programming",
+        linkedlist: "data-structures",
+        stack: "data-structures",
+        skiplist: "data-structures",
+        hashtable: "data-structures",
+        trie: "data-structures",
+        hashring: "cs-and-system-design",
+        jumphash: "cs-and-system-design",
+        ratelimit: "cs-and-system-design",
+        tokenbucket: "cs-and-system-design",
+        bloomfilter: "cs-and-system-design",
+        intervalscheduling: "greedy",
+        minimumspanningtree: "greedy",
+      };
+      const category = categoryMap[slug];
+      if (category) return `/${lang}/algorithms/${category}`;
+      return `/${lang}/algorithms`;
+    }
+    // default fallback: up one level
     pathSegments.pop();
     return `/${pathSegments.join("/")}` || "/";
   };

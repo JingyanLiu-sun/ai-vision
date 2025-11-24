@@ -50,19 +50,7 @@ export default async function Layout(props) {
         <link rel="manifest" href="/manifest.json" />
         {/* Favicon links End */}
 
-        <Script id="check-device-and-load-ads" strategy="afterInteractive">
-          {`
-            (function() {
-              if (typeof window !== 'undefined' && window.innerWidth >= 768) {
-                const script = document.createElement('script');
-                script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7746897490519544";
-                script.async = true;
-                script.crossOrigin = "anonymous";
-                document.head.appendChild(script);
-              }
-            })();
-          `}
-        </Script>
+        {/* ads removed */}
         <Script
           id="microsoft-clarity"
           strategy="afterInteractive"

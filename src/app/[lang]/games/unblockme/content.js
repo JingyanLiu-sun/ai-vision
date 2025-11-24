@@ -4,7 +4,6 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { useI18n } from "@/app/i18n/client";
 import { CustomListbox } from "@/app/components/ListBox";
 import Modal from "@/app/components/Modal";
-import { SideAdComponent } from "@/app/components/AdComponent";
 import { ArrowLeft, ArrowRight, RotateCcw, Undo2 } from "lucide-react";
 
 const STORAGE_KEY = "unblockme-progress";
@@ -444,7 +443,7 @@ const UnblockMeGame = ({ lang, levels }) => {
         </div>
 
         <div className="hidden md:block w-full bg-gray-100">
-          <SideAdComponent format="horizontal" className="absolute inset-0" />
+          {/* ads removed */}
         </div>
       </div>
 
@@ -518,7 +517,7 @@ const UnblockMeGame = ({ lang, levels }) => {
         </div>
 
         <div className="md:hidden bg-gray-100">
-          <SideAdComponent format="square" className="absolute inset-0" />
+          {/* ads removed */}
         </div>
       </div>
 

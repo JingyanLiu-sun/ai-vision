@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useId, useState } from "react";
 import clsx from "clsx";
+import Image from "next/image";
 
 export default function MiniProgramCTA({
   buttonLabel,
@@ -94,7 +95,7 @@ export default function MiniProgramCTA({
             </p>
 
             <div className="mt-5 overflow-hidden rounded-xl border border-dashed border-gray-200 bg-gray-50">
-              <img src={imageSrc} alt={imageAlt || modalTitle} className="w-full object-cover" loading="lazy" />
+              <Image src={imageSrc} alt={imageAlt || modalTitle} width={800} height={450} className="w-full object-cover" unoptimized />
             </div>
 
             <p className="mt-4 text-xs text-gray-500">{helperText}</p>

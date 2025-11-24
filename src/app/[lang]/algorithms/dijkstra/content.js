@@ -330,14 +330,14 @@ const DijkstraVisualization = () => {
     return path.reverse(); // reverse the path to get the correct order
   };
 
-  const handleStepForward = () => {
+  const handleStepForward = useCallback(() => {
     if (!result || currentStepIndex >= result.steps.length - 1) return;
     
     setCurrentStepIndex(currentStepIndex + 1);
     const path = calculatePath(result.steps[currentStepIndex + 1].currentNode, result.parents);
     const updatedEdges = updateEdgeStyles(path, edges);
     setEdges(updatedEdges);
-  };
+  }, [result, currentStepIndex, edges, setEdges]);
 
   useEffect(() => {
     if (!result || !isAutoPlay) return;
@@ -351,7 +351,7 @@ const DijkstraVisualization = () => {
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [currentStepIndex, result, isAutoPlay]);
+  }, [currentStepIndex, result, isAutoPlay, handleStepForward]);
 
   const updateMatrix = (nodes, edges) => {
     const size = nodes.length;

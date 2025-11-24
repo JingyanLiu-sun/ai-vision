@@ -39,3 +39,4 @@ export default async function HeapPage(props) {
     </>
   );
 }
+export const dynamic = 'force-dynamic';

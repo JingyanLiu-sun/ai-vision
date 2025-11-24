@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useCallback } from 'react';
 import * as THREE from 'three';
 import { useThree } from '@react-three/fiber'; // 添加这行
 
@@ -334,7 +334,7 @@ function useCubeControl(groupRef, cubesRef, setEnableOrbitControls) {
     currentIntersection: null,
   });
 
-  const checkIntersection = (event) => {
+  const checkIntersection = useCallback((event) => {
     const rect = gl.domElement.getBoundingClientRect();
     const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
     const y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
@@ -346,9 +346,9 @@ function useCubeControl(groupRef, cubesRef, setEnableOrbitControls) {
     const intersects = raycaster.intersectObjects(cubes);
 
     return intersects[0];
-  };
+  }, [gl, camera, cubesRef]);
 
-  const determineHorizontalMove = (startIntersection, startX, startY, currentX, currentY) => {
+  const determineHorizontalMove = useCallback((startIntersection, startX, startY, currentX, currentY) => {
     // 计算屏幕上的移动差值
     const deltaX = currentX - startX;
     const deltaY = currentY - startY;
@@ -389,9 +389,9 @@ function useCubeControl(groupRef, cubesRef, setEnableOrbitControls) {
     } else {
       return CLOCKWISE_ROTATION_MAPS['y'][direction === 'right' ? 'clockwise' : 'counterclockwise'][y];
     }
-  };
+  }, [camera]);
 
-  const determineVerticalMove = (startIntersection, startX, startY, currentX, currentY) => {
+  const determineVerticalMove = useCallback((startIntersection, startX, startY, currentX, currentY) => {
     const deltaX = currentX - startX;
     const deltaY = currentY - startY;
     // 判断是向上还是向下的倾向
@@ -427,7 +427,7 @@ function useCubeControl(groupRef, cubesRef, setEnableOrbitControls) {
       const x = Math.round(position.x);
       return CLOCKWISE_ROTATION_MAPS['x'][moveClockwise][x];
     }
-  };
+  }, [camera]);
 
   useEffect(() => {
     if (!groupRef.current) return;
@@ -515,7 +515,7 @@ function useCubeControl(groupRef, cubesRef, setEnableOrbitControls) {
       container.removeEventListener('mouseup', handleMouseUp);
       container.removeEventListener('mouseleave', handleMouseUp);
     };
-  }, [camera, gl, scene, groupRef, cubesRef, setEnableOrbitControls]);
+  }, [camera, gl, scene, groupRef, cubesRef, setEnableOrbitControls, checkIntersection, determineHorizontalMove, determineVerticalMove]);
 }
 
 export default function RubiksCube({
@@ -536,14 +536,14 @@ export default function RubiksCube({
       const cleanup = scrambleCube(cubesRef.current, onScrambleComplete);
       return cleanup;
     }
-  }, [isScrambling]);
+  }, [isScrambling, onScrambleComplete]);
 
   useEffect(() => {
     if (isResetting) {
       resetCube(cubesRef.current, camera, controls);
       onResetComplete();
     }
-  }, [isResetting, camera, controls]);
+  }, [isResetting, camera, controls, onResetComplete]);
 
   return (
     <>

@@ -234,7 +234,7 @@ const JumpHashVisualization = () => {
 
   useEffect(() => {
     initialize();
-  }, []);
+  }, [initialize]);
 
   useEffect(() => {
     updateBuckets(numBuckets, keys, hashFunction);

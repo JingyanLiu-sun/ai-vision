@@ -4,7 +4,6 @@ import matter from "gray-matter";
 import { markdownToHtml } from "@/app/components/BlogMarkdown";
 import TableOfContents from "@/app/components/TableOfContents";
 import CommonComments from "@/app/components/GiscusComments";
-import { SideAdComponent } from "@/app/components/AdComponent";
 
 export default async function BlogPostPage(props) {
   const params = await props.params;
@@ -75,7 +74,7 @@ export default async function BlogPostPage(props) {
           <div className="sticky top-4">
             <TableOfContents content={post.contentHtml} />
             <div className="hidden mt-8 md:relative md:block w-full bg-gray-100">
-              <SideAdComponent format="vertical" />
+              {/* ads removed */}
             </div>
           </div>
         </aside>

@@ -8,7 +8,6 @@ import { visit } from "unist-util-visit";
 import fs from 'fs/promises';
 import path from 'path';
 import matter from "gray-matter";
-import { SideAdComponent } from './AdComponent';
 
 // 自定义插件来处理图片
 function rehypeImageSize() {
@@ -37,6 +36,12 @@ export async function markdownToHtml(markdown) {
 async function getMarkdownContent(lang, directoryPath) {
   const filePath = path.join(directoryPath, `${lang}.md`);
   try {
+    await fs.access(filePath);
+  } catch {
+    return null;
+  }
+
+  try {
     const fileContents = await fs.readFile(filePath, 'utf8');
     const { data, content } = matter(fileContents);
     const contentHtml = await markdownToHtml(content);
@@ -44,8 +49,7 @@ async function getMarkdownContent(lang, directoryPath) {
       contentHtml,
       ...data,
     };
-  } catch (error) {
-    console.error(`Error reading file ${filePath}:`, error);
+  } catch {
     return null;
   }
 }
@@ -59,9 +63,7 @@ export default async function BlogMarkdown({ lang, directory }) {
           <div className="w-full lg:w-4/5 lg:mr-8">
             <div className="markdown-body" dangerouslySetInnerHTML={{ __html: markdownContent.contentHtml }} />
           </div>
-          {/* <div className="w-full lg:w-1/5 mt-8 lg:mt-0 lg:sticky lg:top-8">
-            <SideAdComponent />
-          </div> */}
+          {/* ads removed */}
         </div>
       </div>
     );

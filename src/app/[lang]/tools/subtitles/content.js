@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import debounce from 'lodash.debounce';
+import Image from 'next/image';
+
 import { useI18n } from "@/app/i18n/client";
 import usePersistentState from '@/app/components/PersistentState';
 
@@ -126,11 +127,12 @@ const ImageSubtitleTool = () => {
     img.src = uploadedImage;
   }, [uploadedImage, subtitles, subtitleHeightPercent, fontColor, fontSizePercent, fontFamily, textShadow, textStroke, backgroundColor, backgroundOpacity, useGradient, gradientColor]);
 
-  const debouncedGenerateSubtitledImage = useCallback(debounce(generateSubtitledImage, 300), [generateSubtitledImage]);
-
   useEffect(() => {
-    debouncedGenerateSubtitledImage();
-  }, [debouncedGenerateSubtitledImage]);
+    const handler = setTimeout(() => {
+      generateSubtitledImage();
+    }, 300);
+    return () => clearTimeout(handler);
+  }, [generateSubtitledImage]);
 
   const downloadImage = () => {
     if (outputImage) {
@@ -164,7 +166,7 @@ const ImageSubtitleTool = () => {
       <div className="w-full lg:w-3/5 p-4 flex flex-col items-center justify-center bg-gray-200">
         {outputImage ? (
           <>
-            <img src={outputImage} alt="Preview" className="max-w-full max-h-[80vh] object-contain mb-4" />
+            <Image src={outputImage} alt="Preview" width={imageSize.width || 800} height={imageSize.height || 600} className="max-w-full max-h-[80vh] object-contain mb-4" unoptimized />
             <div className="flex flex-wrap justify-center gap-2">
               <button onClick={downloadImage} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
                 {t('downloadImage')}

@@ -102,6 +102,7 @@ const Projects = {
   algorithms: [
     {
       id: "heap",
+      slug: "heap",
       title: "heap_title",
       description: "heap_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240706_ai_gallery_heapv2.gif",
@@ -109,6 +110,7 @@ const Projects = {
     },
     {
       id: "hanoitower",
+      slug: "hanoitower",
       title: "hanoitower_title",
       description: "hanoitower_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240812_ai_gallery_hanoitower.webp",
@@ -116,6 +118,7 @@ const Projects = {
     },
     {
       id: "hashtable",
+      slug: "hashtable",
       title: "hashtable_title",
       description: "hashtable_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240726_ai_gallery_hashtable.webp",
@@ -123,6 +126,7 @@ const Projects = {
     },
     {
       id: "dpcoin",
+      slug: "dpcoin",
       title: "dpcoin_title",
       description: "dpcoin_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240730_ai_gallery_dpcoin.webp",
@@ -130,6 +134,7 @@ const Projects = {
     },
     {
       id: "trie",
+      slug: "trie",
       title: "trie_title",
       description: "trie_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240726_ai_gallery_trie.webp",
@@ -137,6 +142,7 @@ const Projects = {
     },
     {
       id: "binarysearchtree",
+      slug: "binarysearchtree",
       title: "binarysearchtree_title",
       description: "binarysearchtree_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240908_ai_gallery_binarysearchtree.webp",
@@ -144,6 +150,7 @@ const Projects = {
     },
     {
       id: "bloomfilter",
+      slug: "bloomfilter",
       title: "bloomfilter_title",
       description: "bloomfilter_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240805_ai_gallery_bloomfilter.webp",
@@ -151,6 +158,7 @@ const Projects = {
     },
     {
       id: "dijkstra",
+      slug: "dijkstra",
       title: "dijkstra_title",
       description: "dijkstra_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240709_ai_gallery_dijkstra_v3.gif",
@@ -158,6 +166,7 @@ const Projects = {
     },
     {
       id: "stack",
+      slug: "stack",
       title: "stack_title",
       description: "stack_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240726_ai_gallery_stack.webp",
@@ -165,6 +174,7 @@ const Projects = {
     },
     {
       id: "hashring",
+      slug: "hashring",
       title: "hashring_title",
       description: "hashring_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240801_ai_gallery_hashring.webp",
@@ -172,6 +182,7 @@ const Projects = {
     },
     {
       id: "jumphash",
+      slug: "jumphash",
       title: "jumphash_title",
       description: "jumphash_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240809_ai_gallery_jumphash.webp",
@@ -179,6 +190,7 @@ const Projects = {
     },
     {
       id: "skiplist",
+      slug: "skiplist",
       title: "skiplist_title",
       description: "skiplist_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240728_ai_gallery_skiplist.webp",
@@ -186,6 +198,7 @@ const Projects = {
     },
     {
       id: "astar",
+      slug: "astar",
       title: "astar_title",
       description: "astar_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240706_ai_gallery_astar_path.gif",
@@ -193,6 +206,7 @@ const Projects = {
     },
     {
       id: "bfs_path",
+      slug: "bfs_path",
       title: "bfs_path_title",
       description: "bfs_path_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240706_ai_gallery_bfs_path.gif",
@@ -200,6 +214,7 @@ const Projects = {
     },
     {
       id: "linkedlist",
+      slug: "linkedlist",
       title: "linkedlist_title",
       description: "linkedlist_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240726_ai_gallery_linkedlist.webp",
@@ -207,6 +222,7 @@ const Projects = {
     },
     {
       id: "ratelimit",
+      slug: "ratelimit",
       title: "ratelimit_title",
       description: "ratelimit_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240716_ai_gallery_ratelimit.gif",
@@ -214,10 +230,27 @@ const Projects = {
     },
     {
       id: "tokenbucket",
+      slug: "tokenbucket",
       title: "tokenbucket_title",
       description: "tokenbucket_description",
       image: "https://slefboot-1251736664.file.myqcloud.com/20240726_ai_gallery_tokenbucket.webp",
       link: "/algorithms/tokenbucket/",
+    },
+    {
+      id: "intervalscheduling",
+      slug: "intervalscheduling",
+      title: "intervalscheduling_title",
+      description: "intervalscheduling_description",
+      image: "https://slefboot-1251736664.file.myqcloud.com/20251120_ai_gallery_intervalscheduling.webp",
+      link: "/algorithms/intervalscheduling/",
+    },
+    {
+      id: "minimumspanningtree",
+      slug: "minimumspanningtree",
+      title: "minimumspanningtree_title",
+      description: "minimumspanningtree_description",
+      image: "https://slefboot-1251736664.file.myqcloud.com/20251120_ai_gallery_mst.webp",
+      link: "/algorithms/minimumspanningtree/",
     },
   ],
   tools: [

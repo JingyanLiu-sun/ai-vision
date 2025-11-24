@@ -48,3 +48,4 @@ export default async function SudokuPage(props) {
     </>
   );
 }
+export const dynamic = 'force-dynamic';

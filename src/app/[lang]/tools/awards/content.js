@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import template from './templates';
 
 export default function GenAwards({ lang }) {
@@ -44,11 +45,13 @@ export default function GenAwards({ lang }) {
             aspectRatio: `${template.width}/${template.height}`
           }}
         >
-          {/* 底图 */}
-          <img
+          <Image
             src={template.imageUrl}
             alt={template.name}
-            className="absolute top-0 left-0 w-full h-full object-contain"
+            fill
+            className="absolute top-0 left-0"
+            style={{ objectFit: 'contain' }}
+            unoptimized
           />
 
           {/* SVG文字层 */}

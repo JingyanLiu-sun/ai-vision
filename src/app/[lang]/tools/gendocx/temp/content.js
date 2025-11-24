@@ -5,6 +5,7 @@ import { useI18n } from "@/app/i18n/client";
 import { documentTemplates } from "../templates";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const { t } = useI18n();
@@ -93,11 +94,13 @@ const TemplateThumbnail = ({ template, lang }) => {
     <Link href={`/${lang}/tools/gendocx/temp/${template.id}`} className="block group">
       <div className="border rounded-lg overflow-hidden bg-white hover:shadow-lg transition-shadow h-full">
         <div className="aspect-[16/9] relative overflow-hidden bg-gray-50">
-          <img
+          <Image
             src={template.previewImage}
             alt={t(template.previewImageAlt)}
-            className="w-full h-full object-cover"
-            loading="lazy"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            style={{ objectFit: "cover" }}
+            unoptimized
           />
         </div>
         <div className="p-4">

@@ -193,6 +193,7 @@ const BloomFilterCanvas = React.memo(({
     </div>
   );
 });
+BloomFilterCanvas.displayName = "BloomFilterCanvas";
 
 const BloomFilterDemo = () => {
   const [n, setN] = useState(200);
@@ -230,7 +231,7 @@ const BloomFilterDemo = () => {
 
   useEffect(() => {
     resetFilter();
-  }, [n, k]);
+  }, [n, k, resetFilter]);
 
   const resetFilter = useCallback(() => {
     const newM = n * k;
@@ -252,7 +253,7 @@ const BloomFilterDemo = () => {
     );
   };
 
-  const hash = (data, seed) => {
+  const hash = useCallback((data, seed) => {
     const m = 0xc6a4a793;
     const r = 24;
     let h = seed ^ (data.length * m);
@@ -279,7 +280,7 @@ const BloomFilterDemo = () => {
     }
 
     return h >>> 0;
-  };
+  }, []);
 
   const addKeyPosition = useCallback((key, positions) => {
     setKeyPositions((prev) => {
@@ -465,7 +466,7 @@ const BloomFilterDemo = () => {
                 ? "text-orange-500"
                 : "text-red-600"
                 }`}>
-                "{searchResult.key}" {searchResult.exists ? t("mayExist") : t("definitelyNotExist")}
+                {`"${searchResult.key}" ${searchResult.exists ? t("mayExist") : t("definitelyNotExist")}`}
               </p>
             </div>
           )}
@@ -476,4 +477,3 @@ const BloomFilterDemo = () => {
 };
 
 export default BloomFilterDemo;
-

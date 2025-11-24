@@ -210,7 +210,7 @@ const BinarySearchTreeVisualization = () => {
 
   useEffect(() => {
     initializeTree();
-  }, []);
+  }, [initializeTree]);
 
   const animateOperation = useCallback(
     async (operation, key) => {
@@ -651,7 +651,7 @@ const BinarySearchTreeVisualization = () => {
         return result;
       }
     },
-    [tree]
+    [tree, t]
   );
 
   const handleInsert = useCallback(async () => {
@@ -749,6 +749,7 @@ const BinarySearchTreeVisualization = () => {
       opacity={opacity}
     />
   ));
+  Line.displayName = "Line";
 
   const getTreeDimensions = useCallback((node) => {
     if (!node) return { minX: 0, maxX: 0, maxY: 0 };

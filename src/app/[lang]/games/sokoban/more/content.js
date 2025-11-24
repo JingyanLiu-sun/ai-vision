@@ -143,6 +143,7 @@ const MapThumbnail = memo(({ mapData, completedInfo }) => {
     </div>
   );
 });
+MapThumbnail.displayName = "MapThumbnail";
 
 const FilterBar = memo(({ onFilterChange, completedLevels }) => {
   const { t } = useI18n();
@@ -265,6 +266,7 @@ const FilterBar = memo(({ onFilterChange, completedLevels }) => {
     </div>
   );
 });
+FilterBar.displayName = "FilterBar";
 
 const Pagination = memo(({ currentPage, totalPages, onPageChange }) => {
   const { t } = useI18n();
@@ -346,6 +348,7 @@ const Pagination = memo(({ currentPage, totalPages, onPageChange }) => {
     </div>
   );
 });
+Pagination.displayName = "Pagination";
 
 const SokobanGallery = ({ levels }) => {
   const containerRef = useRef(null);

@@ -104,4 +104,4 @@ const dynamicChartConfigs = [
   }
 ];
 
-module.exports = { dynamicChartConfigs };
+export { dynamicChartConfigs };

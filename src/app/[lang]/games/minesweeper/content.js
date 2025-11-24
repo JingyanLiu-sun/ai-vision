@@ -12,7 +12,6 @@ import Modal from "@/app/components/Modal";
 import usePersistentState from '@/app/components/PersistentState';
 import { trackEvent, EVENTS, CATEGORIES } from '@/app/utils/analytics';
 import { THEMES, THEME_OPTIONS } from './themes';
-import { SideAdComponent } from "@/app/components/AdComponent";
 
 const DIFFICULTY_LEVELS = {
   easy: { rows: 9, cols: 9, mines: 10 },
@@ -355,7 +354,7 @@ const Settings = ({ settings, onSettingsChange, onReset, onContinue, canContinue
     if (isInitialized && selectedLevel !== "custom" && DIFFICULTY_LEVELS[selectedLevel]) {
       onSettingsChange(DIFFICULTY_LEVELS[selectedLevel], true);
     }
-  }, [selectedLevel, isInitialized]);
+  }, [selectedLevel, isInitialized, onSettingsChange]);
 
   const displayLevel = levelToTranslation[selectedLevel] || levelToTranslation.custom;
 
@@ -555,7 +554,7 @@ const Settings = ({ settings, onSettingsChange, onReset, onContinue, canContinue
         </div>
 
         <div className="hidden md:relative md:block w-full bg-gray-100">
-          <SideAdComponent/>
+          {/* ads removed */}
         </div>
       </div>
     </div>
@@ -628,13 +627,13 @@ export default function Minesweeper() {
     const newGame = new GameClass(settings.rows, settings.cols, settings.mines);
     newGame.setAutoFlag(settings.autoFlag);
     setGame(newGame);
-  }, [settings?.rows, settings?.cols, settings?.mines, isHexagonal]);
+  }, [settings?.rows, settings?.cols, settings?.mines, settings?.autoFlag, isHexagonal]);
 
   useEffect(() => {
     if (game && settings) {
       game.setAutoFlag(settings.autoFlag);
     }
-  }, [settings?.autoFlag]);
+  }, [game, settings]);
 
   // Add emoji rendering logic
   useLayoutEffect(() => {
@@ -713,7 +712,7 @@ export default function Minesweeper() {
         }
       }
     },
-    [game, settings, isHexagonal]
+    [game, settings, isHexagonal, setSettings]
   );
 
   const handleReset = useCallback(() => {
@@ -859,7 +858,7 @@ export default function Minesweeper() {
         });
       }
     }
-  }, [game.gameOver, game.won, time, t, isHexagonal]);
+  }, [game.gameOver, game.won, time, t, isHexagonal, modalState.isOpen]);
 
   const closeModal = () => {
     setModalState({

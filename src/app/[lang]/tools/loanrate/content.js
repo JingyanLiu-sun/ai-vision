@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ReactECharts from "echarts-for-react";
 import * as XLSX from "xlsx";
 import { useI18n } from "@/app/i18n/client";
@@ -9,8 +9,8 @@ export default function LoanRateCalculator() {
   const { t, dictionary } = useI18n();
   
   // 直接从字典中获取loanrate对象
-  const loanDict = dictionary.loanrate || {};
-  const tLoan = (key) => loanDict[key] || key;
+  const loanDict = React.useMemo(() => dictionary.loanrate || {}, [dictionary]);
+  const tLoan = React.useCallback((key) => loanDict[key] || key, [loanDict]);
   
   const [rate, setRate] = useState(3.35);
   const [amount, setAmount] = useState(1000000);
@@ -174,7 +174,7 @@ export default function LoanRateCalculator() {
   };
 
   // 计算结果
-  const calculateLoan = () => {
+  const calculateLoan = useCallback(() => {
     if (!amount || !rate || !months) return;
 
     // 计算不同利率下的结果
@@ -312,7 +312,7 @@ export default function LoanRateCalculator() {
         },
       ],
     });
-  };
+  }, [rate, amount, months, formatNumber, tLoan]);
 
   // 导出Excel
   const exportToExcel = () => {
@@ -389,10 +389,10 @@ export default function LoanRateCalculator() {
   // 初始计算
   useEffect(() => {
     calculateLoan();
-  }, []);
+  }, [calculateLoan]);
 
   // 格式化数字为千分位
-  const formatNumber = (num) => {
+  const formatNumber = React.useCallback((num) => {
     // 根据t对象判断当前语言类型
     const isZh = dictionary.loanrate?.yuan === "元";
     const currencySuffix = isZh ? "元" : "";
@@ -400,7 +400,7 @@ export default function LoanRateCalculator() {
     // 根据语言选择格式化方式
     const locale = isZh ? "zh-CN" : "en-US";
     return new Intl.NumberFormat(locale).format(num.toFixed(2)) + currencySuffix;
-  };
+  }, [dictionary]);
 
   return (
     <div className="w-full mx-auto mt-4">

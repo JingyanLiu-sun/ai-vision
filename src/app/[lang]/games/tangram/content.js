@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import shapeTargets from './shapeTargets';
 import { useI18n } from "@/app/i18n/client";
 
@@ -290,7 +290,7 @@ const TangramGame = ({ lang = 'en' }) => {
   };
 
   // 处理拖拽结束
-  const handleMouseUp = (e) => {
+  const handleMouseUp = useCallback((e) => {
     if (!dragInfo.isDragging) {
       // 不是拖拽结束时，保留当前选择状态
       setDragPreview(null);
@@ -357,7 +357,7 @@ const TangramGame = ({ lang = 'en' }) => {
 
     // 重置拖拽状态
     setDragInfo({ isDragging: false, startX: 0, startY: 0, startClientX: 0, startClientY: 0, currentX: 0, currentY: 0, sourceArea: null });
-  };
+  }, [dragInfo.isDragging, dragInfo.sourceArea, activePiece]);
 
   // 计算旋转控制器的位置
   const getRotatorPosition = () => {
@@ -643,7 +643,7 @@ const TangramGame = ({ lang = 'en' }) => {
       window.removeEventListener('mouseup', handleGlobalMouseUp);
       window.removeEventListener('mousemove', handleGlobalMouseMove);
     };
-  }, [dragInfo.isDragging, dragInfo.sourceArea]);
+  }, [dragInfo.isDragging, dragInfo.sourceArea, handleMouseUp]);
 
   // Handle target shape selection
   const handleTargetSelect = (target) => {

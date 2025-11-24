@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { CustomListbox } from '@/app/components/ListBox';
 import { useI18n } from '@/app/i18n/client';
 import Modal from '@/app/components/Modal';
-import { SideAdComponent } from "@/app/components/AdComponent";
 
 // Priority Queue implementation
 class PriorityQueue {
@@ -66,7 +65,7 @@ const SlidingPuzzle = () => {
   const boardToString = (board) => board.flat().join(',');
 
   // Get valid moves for current position
-  const getValidMoves = (board, emptyPos) => {
+  const getValidMoves = useCallback((board, emptyPos) => {
     const moves = [];
     const directions = [
       [-1, 0],
@@ -105,7 +104,7 @@ const SlidingPuzzle = () => {
     }
 
     return moves;
-  };
+  }, [size, t]);
 
   // A* algorithm implementation
   const solvePuzzle = async (initialBoard, initialEmptyPos) => {
@@ -220,7 +219,7 @@ const SlidingPuzzle = () => {
     }
   };
 
-  const getMovesByDifficulty = (difficulty) => {
+  const getMovesByDifficulty = useCallback((difficulty) => {
     switch (difficulty) {
       case t('difficulty_easy'):
         return Math.floor(Math.random() * 4 + 1);
@@ -231,9 +230,9 @@ const SlidingPuzzle = () => {
       default:
         return Math.floor(Math.random() * 10);
     }
-  };
+  }, [t]);
 
-  const initializeBoard = (size) => {
+  const initializeBoard = useCallback((size) => {
     // If in edit mode, exit edit mode first
     if (isEditing) {
       setIsEditing(false);
@@ -267,7 +266,7 @@ const SlidingPuzzle = () => {
     setCurrentSolutionStep(-1);
     setTime(0);
     setTimerActive(false); 
-  };
+  }, [isEditing, difficulty, getMovesByDifficulty, getValidMoves]);
 
   // Fisher-Yates shuffle
   const shuffleArray = (array) => {
@@ -421,7 +420,7 @@ const SlidingPuzzle = () => {
   // Initialize on mount and size change
   useEffect(() => {
     initializeBoard(size);
-  }, [size]);
+  }, [size, initializeBoard]);
 
   // Add timer effect
   useEffect(() => {
@@ -653,9 +652,7 @@ const SlidingPuzzle = () => {
                 </>
               )}
             </div>
-            <div className="hidden md:relative md:block w-full bg-gray-100">
-              <SideAdComponent />
-            </div>
+            {/* ads removed */}
           </div>
         </div>
       </div>

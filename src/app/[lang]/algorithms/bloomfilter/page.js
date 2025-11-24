@@ -34,8 +34,10 @@ export default async function BloomFilterPage(props) {
     <>
       <PageHeader lang={lang} pathname={`/${lang}/algorithms/bloomfilter`} />
       <BloomFilterDemo lang={lang} />
+      {/* Markdown is optional; skip if file missing to avoid build errors */}
       <BlogMarkdown lang={lang} directory="src/app/[lang]/algorithms/bloomfilter" />
       <CommonComments lang={lang} />
     </>
   );
 }
+export const dynamic = 'force-dynamic';

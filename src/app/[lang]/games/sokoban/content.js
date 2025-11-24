@@ -8,7 +8,6 @@ import Modal from "@/app/components/Modal";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { trackEvent, CATEGORIES, EVENTS } from "@/app/utils/analytics";
-import {SideAdComponent} from "@/app/components/AdComponent";
 
 const STORAGE_KEY = 'sokoban-progress';
 
@@ -214,11 +213,11 @@ const SokobanGame = ({ lang, levels }) => {
     }
 
     handleLevelChange(newLevel);
-  }, [levels, handleLevelChange]);
+  }, [levels, handleLevelChange, t]);
 
   useEffect(() => {
     resetGame();
-  }, [currentLevel]);
+  }, [currentLevel, resetGame]);
 
   const movePlayer = useCallback(
     (direction) => {
@@ -450,7 +449,7 @@ const SokobanGame = ({ lang, levels }) => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [gameState.isWon, movePlayer]);
+  }, [gameState.isWon, movePlayer, gameInstance]);
 
   useEffect(() => {
     const updateCellSize = () => {
@@ -505,9 +504,9 @@ const SokobanGame = ({ lang, levels }) => {
       );
       setShowModal(true);
     }
-  }, [gameState.isWon]);
+  }, [gameState.isWon, currentLevel, gameState.moves, saveProgress, t]);
 
-  const saveProgress = (levelIndex, moves) => {
+  const saveProgress = useCallback((levelIndex, moves) => {
     let mapHash;
     
     if (customLevelInfo) {
@@ -526,7 +525,7 @@ const SokobanGame = ({ lang, levels }) => {
     };
     setCompletedLevels(newCompletedLevels);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(newCompletedLevels));
-  };
+  }, [completedLevels, customLevelInfo, levels]);
 
   const canUndo = useCallback(() => {
     return gameInstance && gameInstance.history.length > 1;
@@ -747,7 +746,7 @@ const SokobanGame = ({ lang, levels }) => {
 
         {!shouldPlaceAdBelowSettings && ( 
           <div className="hidden md:block w-full bg-gray-100">
-            <SideAdComponent format="horizontal" className="absolute inset-0" />
+            {/* ads removed */}
           </div>
         )}
       </div>
@@ -907,7 +906,7 @@ const SokobanGame = ({ lang, levels }) => {
 
         {shouldPlaceAdBelowSettings && (
           <div className="hidden md:block w-full bg-gray-100">
-            <SideAdComponent/>
+            {/* ads removed */}
           </div>
         )}
       </div>

@@ -3,7 +3,6 @@ import Link from "next/link";
 import ResponsiveWebPImage from "@/app/components/ResponseImage";
 import Projects from "@/app/config/project";
 import { getDictionary } from "@/app/dictionaries";
-import { SideAdComponent } from "@/app/components/AdComponent";
 
 const ProjectCard = async ({ title, description, image, link, lang }) => {
   const dict = await getDictionary(lang);
@@ -24,8 +23,14 @@ const ProjectCard = async ({ title, description, image, link, lang }) => {
   );
 };
 
-const ProjectGrid = async ({ category, lang }) => {
-  const projectList = Projects[category] || [];
+const ProjectGrid = async ({ category, lang, slugs }) => {
+  let projectList = [];
+
+  if (slugs) {
+    projectList = (Projects.algorithms || []).filter(p => slugs.includes(p.slug || p.id));
+  } else if (category) {
+    projectList = Projects[category] || [];
+  }
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {projectList.map((project) => (

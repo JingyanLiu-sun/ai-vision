@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectGrid from "@/app/components/ProjectGrid";
+import AlgorithmCategoryGrid from "@/app/components/AlgorithmCategoryGrid";
 import { getDictionary } from "@/app/dictionaries";
 import { PageMeta } from "@/app/components/Meta";
 
@@ -34,7 +34,7 @@ export default async function Algorithms(props) {
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4">{dict.algorithms_title}</h1>
-      <ProjectGrid category="algorithms" lang={lang} />
+      <AlgorithmCategoryGrid lang={lang} />
     </div>
   );
 }

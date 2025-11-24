@@ -6,7 +6,9 @@ import path from 'path';
 import fs from 'fs/promises';
 import { getDictionary } from "@/app/dictionaries";
 import { PageMeta } from "@/app/components/Meta";
-import Papa from 'papaparse';
+
+export const dynamic = 'force-dynamic';
+// Avoid using PapaParse in SSR, implement a minimal CSV parser
 
 export async function generateStaticParams() {
   return dynamicChartConfigs.flatMap((config) => 
@@ -15,6 +17,21 @@ export async function generateStaticParams() {
       chartId: config.id,
     }))
   );
+}
+
+function parseCSV(content) {
+  const lines = content.split(/\r?\n/).filter((l) => l.trim().length > 0);
+  if (lines.length === 0) return [];
+  const headers = lines[0].split(',').map((h) => h.trim());
+  const rows = lines.slice(1).map((line) => {
+    const cols = line.split(',');
+    const obj = {};
+    headers.forEach((h, i) => {
+      obj[h] = (cols[i] ?? '').trim();
+    });
+    return obj;
+  });
+  return { headers, rows };
 }
 
 async function fetchChartData(dataFile, config) {
@@ -26,37 +43,41 @@ async function fetchChartData(dataFile, config) {
     if (dataFile.endsWith('.json')) {
       parsedData = JSON.parse(content);
     } else if (dataFile.endsWith('.csv')) {
-      parsedData = Papa.parse(content, { header: true }).data;
+      const { headers, rows } = parseCSV(content);
+      parsedData = { headers, rows };
     } else {
       throw new Error("Unsupported file format");
     }
 
     
-    if (Array.isArray(parsedData) && parsedData.length > 1) {
-      if (dataFile.endsWith('.json')) {
+    if (dataFile.endsWith('.json')) {
+      if (Array.isArray(parsedData) && parsedData.length > 1) {
         return parsedData;
       }
-      // 获取列名
-      const headers = Object.keys(parsedData[0]);
-      // 找到时间和值列的索引
-      const timeIndex = headers.indexOf(config.columns.time);
-      const valueIndex = headers.indexOf(config.columns.value);
-
-      // 处理数据格式
-      const processedData = parsedData.map(row => {
-        const processedRow = headers.map((header, index) => {
-          if (index === timeIndex || index === valueIndex) {
-            return Number(row[header]);
-          }
-          return row[header];
-        });
-        return processedRow;
-      });
-
-      return [headers, ...processedData];
-    } else {
-      throw new Error("Invalid data format");
+      throw new Error("Invalid JSON data format");
     }
+
+    // CSV path
+    if (!parsedData || !parsedData.headers || !parsedData.rows || parsedData.rows.length === 0) {
+      throw new Error("Invalid CSV data format");
+    }
+    const headers = parsedData.headers;
+    const timeIndex = headers.indexOf(config.columns.time);
+    const valueIndex = headers.indexOf(config.columns.value);
+    if (timeIndex === -1 || valueIndex === -1) {
+      throw new Error("Missing required columns in CSV");
+    }
+    const processedData = parsedData.rows.map((rowObj) => {
+      return headers.map((header, index) => {
+        const v = rowObj[header];
+        if (index === timeIndex || index === valueIndex) {
+          const num = Number(v);
+          return Number.isNaN(num) ? 0 : num;
+        }
+        return v;
+      });
+    });
+    return [headers, ...processedData];
   } catch (error) {
     console.error("Error loading data:", error);
     return null;

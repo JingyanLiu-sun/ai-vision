@@ -32,7 +32,7 @@ const DynamicChart = ({ config, initialData }) => {
       setChartHeight(newHeight);
     }
     generateChart();
-  }, []);
+  }, [config.max, data, config.columns.type, generateChart]);
 
   // 生成随机颜色的函数
   const generateRandomColor = (index) => {
@@ -70,9 +70,9 @@ const DynamicChart = ({ config, initialData }) => {
     }
 
     return () => clearInterval(animationInterval);
-  }, [chartOption, currentYearIndex]);
+  }, [chartOption, currentYearIndex, updateChart, yearInterval]);
 
-  const generateChart = () => {
+  const generateChart = React.useCallback(() => {
     const headers = data[0];
     const dataRows = data.slice(1);
 
@@ -159,9 +159,9 @@ const DynamicChart = ({ config, initialData }) => {
 
     setChartOption(option);
     setCurrentYearIndex(0);
-  };
+  }, [data, config, maxDataLength, memoizedColorMap, t]);
 
-  const updateChart = () => {
+  const updateChart = React.useCallback(() => {
     if (!chartOption) return;
 
     const headers = data[0];
@@ -220,7 +220,7 @@ const DynamicChart = ({ config, initialData }) => {
     }
 
     setCurrentYearIndex(nextYearIndex);
-  };
+  }, [chartOption, data, config, currentYearIndex, chartRef]);
 
   return (
     <div className="container mx-auto">
