@@ -12,7 +12,12 @@ async function PageHeader({ lang, pathname, title }) {
 
   const getTitle = () => {
     if (title) {
-      return dict[title] || title;
+      const direct = dict[title];
+      if (typeof direct === 'string') return direct;
+      if (dict.seo && dict.seo[title] && typeof dict.seo[title].title === 'string') {
+        return dict.seo[title].title;
+      }
+      return title;
     }
     const pathSegments = pathname.split("/").filter(Boolean);
     const currentPage = pathSegments[pathSegments.length - 1];

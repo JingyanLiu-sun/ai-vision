@@ -1,9 +1,8 @@
-import { getDictionary } from "@/app/dictionaries";
 import HanoiTower from "./content";
 import { PageMeta } from "@/app/components/Meta";
 import PageHeader from "@/app/components/PageHeader";
 import CommonComments from "@/app/components/GiscusComments";
-import BlogMarkdown from "@/app/components/BlogMarkdown";
+import { getDictionary } from "@/app/dictionaries";
 
 export async function generateMetadata(props) {
   const params = await props.params;
@@ -29,12 +28,15 @@ export default async function HanoiTowerPage(props) {
   const {
     lang
   } = params;
+  const dict = await getDictionary(lang);
 
   return (
     <>
       <PageHeader lang={lang} pathname={`/${lang}/algorithms/hanoitower`} />
       <HanoiTower lang={lang} />
-      <BlogMarkdown lang={lang} directory="src/app/[lang]/algorithms/hanoitower" />
+      <div className="mt-6 flex justify-center">
+        <a href={`/${lang}/algorithms/hanoitower/docs`} className="px-4 py-2 bg-gray-800 text-white rounded">{dict.view_docs || "View Docs"}</a>
+      </div>
       <CommonComments lang={lang} />
     </>
   );

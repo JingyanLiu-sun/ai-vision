@@ -40,6 +40,7 @@ const HanoiTower = () => {
   const [hasSavedProgress, setHasSavedProgress] = useState(false);
   const [showLoadNotification, setShowLoadNotification] = useState(false);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const [showCelebration, setShowCelebration] = useState(false);
 
   const resetTowers = useCallback(() => {
     setTowers([Array.from({ length: disks }, (_, i) => disks - i), [], []]);
@@ -206,6 +207,7 @@ const HanoiTower = () => {
           } else {
             setIsPlaying(false);
             setMessage(t("gameCompleted"));
+            setShowCelebration(true);
             trackEvent(CATEGORIES.HanoiTower, EVENTS.HanoiTower.Success, {
               disks: disks,
               mode: "auto",
@@ -218,7 +220,7 @@ const HanoiTower = () => {
       return () => clearTimeout(timer);
     }
     return undefined;
-  }, [isPlaying, speed, disks, mode, findNextMove, towersToConf, t]);
+  }, [isPlaying, speed, disks, mode, findNextMove, towersToConf, t, towers]);
 
   const handleDragStart = (e, fromTower, diskIndex) => {
     if (mode !== "manual") return;
@@ -260,6 +262,9 @@ const HanoiTower = () => {
 
       setMessage(t("moveSuccess"));
       setHintMove(null);
+      if ((totalMoves + 1) % 7 === 0) {
+        alert(`${t("moveSuccess") || "Great move!"} #${totalMoves + 1}`);
+      }
 
       // Check if the game is completed
       if (towers[2].length === disks - 1 && toTower === 2) {
@@ -270,6 +275,7 @@ const HanoiTower = () => {
             mode: "manual",
           });
           setMessage(t("gameCompleted"));
+          setShowCelebration(true);
         }, 100);
       }
     } else {
@@ -278,6 +284,7 @@ const HanoiTower = () => {
         disks: disks,
       });
       setMessage(t("moveFailure"));
+      alert(t("moveFailure") || "Oops! Bigger disk cannot be placed on a smaller one.");
     }
   };
 
@@ -304,6 +311,9 @@ const HanoiTower = () => {
           setTotalMoves((prev) => prev + 1);
           setMessage(t("moveSuccess"));
           setHintMove(null);
+          if ((totalMoves + 1) % 3 === 0) {
+            alert(`${t("moveSuccess") || "Great move!"} #${totalMoves + 1}`);
+          }
 
           if (towers[2].length === disks - 1 && toTower === 2) {
             setTimeout(() => {
@@ -313,6 +323,7 @@ const HanoiTower = () => {
                 disks: disks,
                 mode: "manual",
               });
+              setShowCelebration(true);
             }, 100);
           }
         } else {
@@ -321,6 +332,7 @@ const HanoiTower = () => {
             disks: disks,
           });
           setMessage(t("moveFailure"));
+          alert(t("moveFailure") || "Oops! Bigger disk cannot be placed on a smaller one.");
         }
       }
       setSelectedTower(null);
@@ -526,6 +538,17 @@ const HanoiTower = () => {
       {showLoadNotification && (
         <div className="fixed top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded shadow-lg z-50">
           {t('progress_loaded')}
+        </div>
+      )}
+      {showCelebration && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 shadow-xl text-center">
+            <div className="text-2xl font-bold mb-2">{t("congratulations") || "Congratulations, you succeeded!"}</div>
+            <div className="mb-4">{t("movesCount", { total: totalMoves, minimum: 2 ** disks - 1 })}</div>
+            <button className="px-4 py-2 bg-green-600 text-white rounded" onClick={() => { setShowCelebration(false); resetTowers(); }}>
+              {t("reset") || "Reset"}
+            </button>
+          </div>
         </div>
       )}
     </div>

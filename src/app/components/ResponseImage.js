@@ -1,33 +1,17 @@
-import React, { useMemo } from 'react';
-import Image from 'next/image';
+"use client";
+import React, { useEffect, useState } from 'react';
 
-const getImageUrl = (url, size) => {
-  const baseUrl = url.split('/webp')[0]; // 移除任何现有的 /webp 后缀
-  return `${baseUrl}/webp${size}`;
-};
-
-const ResponsiveWebPImage = React.memo(({ src, alt, isGif = false }) => {
-  const imageUrls = useMemo(() => {
-    if (isGif) return { src };
-    return {
-      src: getImageUrl(src, 1600),
-      srcSet: `
-        ${getImageUrl(src, 400)} 400w,
-        ${getImageUrl(src, 800)} 800w,
-        ${getImageUrl(src, 1600)} 1600w
-      `
-    };
-  }, [src, isGif]);
-
+const ResponsiveWebPImage = React.memo(({ src, alt }) => {
+  const [resolvedSrc, setResolvedSrc] = useState(src);
+  useEffect(() => setResolvedSrc(src), [src]);
   return (
     <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
-      <Image
-        {...imageUrls}
+      <img
+        src={resolvedSrc}
         alt={alt}
-        fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        style={{ objectFit: "cover" }}
-        unoptimized
+        loading="lazy"
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+        onError={() => setResolvedSrc('/logo512.png')}
       />
     </div>
   );

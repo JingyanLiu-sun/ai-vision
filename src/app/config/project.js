@@ -241,7 +241,7 @@ const Projects = {
       slug: "intervalscheduling",
       title: "intervalscheduling_title",
       description: "intervalscheduling_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20251120_ai_gallery_intervalscheduling.webp",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-11-26%20134142.png",
       link: "/algorithms/intervalscheduling/",
     },
     {
@@ -249,7 +249,7 @@ const Projects = {
       slug: "minimumspanningtree",
       title: "minimumspanningtree_title",
       description: "minimumspanningtree_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20251120_ai_gallery_mst.webp",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-11-26%20134131.png",
       link: "/algorithms/minimumspanningtree/",
     },
   ],

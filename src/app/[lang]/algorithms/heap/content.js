@@ -154,25 +154,6 @@ class Heap {
 const HeapVisualization = () => {
   const [heapType, setHeapType] = useState(HEAP_TYPES.MAX);
   const [heap, setHeap] = useState(() => {
-    // 检查是否有保存的进度
-    try {
-      const savedProgress = localStorage.getItem('heapVisualizationProgress');
-      if (savedProgress) {
-        const progress = JSON.parse(savedProgress);
-        const savedHeap = new Heap(progress.heapType);
-        
-        // 恢复堆数据
-        if (progress.heapData && Array.isArray(progress.heapData)) {
-          progress.heapData.forEach((value) => savedHeap.insert(value));
-        }
-        
-        return savedHeap;
-      }
-    } catch (error) {
-      console.error('Failed to load saved progress on init:', error);
-    }
-    
-    // 如果没有保存的进度，使用默认堆
     const initialHeap = new Heap(HEAP_TYPES.MAX);
     [50, 30, 20, 15, 10, 8, 16, 4, 5, 6, 100, 300].forEach((value) => initialHeap.insert(value));
     return initialHeap;
@@ -204,11 +185,15 @@ const HeapVisualization = () => {
       const savedProgress = localStorage.getItem('heapVisualizationProgress');
       if (savedProgress) {
         const progress = JSON.parse(savedProgress);
+        const restoredHeap = new Heap(progress.heapType || HEAP_TYPES.MAX);
+        if (progress.heapData && Array.isArray(progress.heapData)) {
+          progress.heapData.forEach((value) => restoredHeap.insert(value));
+        }
         setHeapType(progress.heapType || HEAP_TYPES.MAX);
+        setHeap(restoredHeap);
         setHasSavedProgress(true);
         setShowLoadNotification(true);
         
-        // 3秒后隐藏加载提示
         const timer = setTimeout(() => {
           setShowLoadNotification(false);
         }, 3000);

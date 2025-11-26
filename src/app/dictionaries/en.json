@@ -66,6 +66,10 @@
   "bfs_path_description": "Visual demonstration of Breadth-First Search algorithm. Given a network, you can set obstacles, start point, end point, then show the path finding process.",
   "heap_title": "Max/Min Heap Algorithm Operations Visualization",
   "heap_description": "This page provides visualization of max/min heap algorithm operations, supports setting max or min heap, supports insert, delete operations. Can dynamically display specific steps of operations to help understand heap operation principles.",
+  "intervalscheduling_title": "Interval Scheduling",
+  "intervalscheduling_description": "Greedy by earliest finish time to select maximum non-overlapping intervals. Supports step/auto play, random/add intervals with timeline highlight.",
+  "minimumspanningtree_title": "Minimum Spanning Tree (Kruskal/Prim)",
+  "minimumspanningtree_description": "Switch between Kruskal and Prim with step/auto play and random graph generation; candidate and picked edges highlighted with total weight displayed.",
   "insert_node": "Insert Node",
   "delete_root": "Delete Root Node",
   "deleted_node": "Deleted Node",
@@ -184,6 +188,14 @@
   "random": "Random",
   "sequential": "Sequential",
   "add": "Add",
+  "step": "Step",
+  "stop": "Stop",
+  "selected": "Selected",
+  "picked": "Picked",
+  "earliest_end": "Earliest finish",
+  "earliest_start": "Earliest start",
+  "shortest_duration": "Shortest duration",
+  "prim": "Prim",
   "enterKeyToSearch": "Enter key to search",
   "enterKeyToDelete": "Enter key to delete",
   "key": "Key",
@@ -724,6 +736,16 @@
       "title": "Open Source Visualization of Common Algorithms",
       "description": "Generate visual demonstrations of various algorithms through Claude3.5 and GPT4, including trie, linked list, stack, rate limiting, path finding and hash table.",
       "keywords": "Algorithm visualization, data structures, online visualization"
+    },
+    "intervalscheduling": {
+      "title": "Greedy: Interval Scheduling",
+      "description": "Greedy by earliest finish time, selecting maximum non-overlapping intervals. Supports step/auto play, random/add intervals, with timeline highlight.",
+      "keywords": "Greedy, interval scheduling, activity selection, algorithm visualization"
+    },
+    "minimumspanningtree": {
+      "title": "Greedy: Minimum Spanning Tree (Kruskal/Prim)",
+      "description": "Visualize Kruskal and Prim with interactive step/auto play and random graph generation. Candidate and picked edges highlighted, total weight displayed.",
+      "keywords": "Greedy, MST, Kruskal, Prim, union-find, algorithm visualization"
     },
     "games": {
       "title": "Open Source React Games",

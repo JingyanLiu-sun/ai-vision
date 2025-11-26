@@ -3,7 +3,7 @@ import DijkstraVisualization from "./content";
 import { PageMeta } from "@/app/components/Meta";
 import PageHeader from "@/app/components/PageHeader";
 import CommonComments from "@/app/components/GiscusComments";
-import BlogMarkdown from "@/app/components/BlogMarkdown";
+import Link from "next/link";
 
 export async function generateMetadata(props) {
   const params = await props.params;
@@ -43,7 +43,9 @@ export default async function DijkstraPage(props) {
     <>
       <PageHeader lang={lang} pathname={`/${lang}/algorithms/dijkstra`} />
       <DijkstraVisualization lang={lang} />
-      <BlogMarkdown lang={lang} directory="src/app/[lang]/algorithms/dijkstra" />
+      <div className="mt-6 flex justify-center">
+        <Link href={`/${lang}/algorithms/dijkstra/docs`} className="px-4 py-2 bg-gray-800 text-white rounded">View Docs</Link>
+      </div>
       <CommonComments lang={lang} />
     </>
   );

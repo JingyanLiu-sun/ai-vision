@@ -24,7 +24,7 @@ export default async function IntervalSchedulingPage(props) {
   const { lang } = params;
   return (
     <>
-      <PageHeader lang={lang} pathname={`/${lang}/algorithms/intervalscheduling`} />
+      <PageHeader lang={lang} pathname={`/${lang}/algorithms/intervalscheduling`} title="intervalscheduling" />
       <IntervalSchedulingVisualization lang={lang} />
       <BlogMarkdown lang={lang} directory="src/app/[lang]/algorithms/intervalscheduling" />
       <CommonComments lang={lang} />

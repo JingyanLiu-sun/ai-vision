@@ -66,6 +66,10 @@
   "bfs_path_description": "可视化展示广度优先寻路算法，给定一个网络，可以设置障碍物，起点，终点，然后展示寻路过程",
   "heap_title": "大(小)根堆算法操作可视化",
   "heap_description": "本页面提供了大(小)根堆算法的操作可视化，支持设置大顶还是小顶，支持插入、删除等操作。可以动态显示操作的具体步骤，帮助理解堆操作的原理。",
+  "intervalscheduling_title": "区间调度",
+  "intervalscheduling_description": "结束时间最早优先的贪心策略，选择最多的不重叠区间。支持步进/自动播放、随机与新增区间，时间轴高亮展示选择过程。",
+  "minimumspanningtree_title": "最小生成树（Kruskal/Prim）",
+  "minimumspanningtree_description": "支持 Kruskal 与 Prim 两种算法切换，交互步进/自动播放、随机生成图，候选与选中边高亮，并显示总权重。",
   "insert_node": "插入节点",
   "delete_root": "删除根节点",
   "deleted_node": "被删节点",
@@ -184,6 +188,14 @@
   "random": "随机",
   "sequential": "顺序",
   "add": "添加",
+  "step": "步进",
+  "stop": "停止",
+  "selected": "已选",
+  "picked": "已选边",
+  "earliest_end": "最早结束",
+  "earliest_start": "最早开始",
+  "shortest_duration": "最短持续",
+  "prim": "Prim",
   "enterKeyToSearch": "输入要搜索的键",
   "enterKeyToDelete": "输入要删除的键",
   "key": "键",
@@ -725,6 +737,16 @@
       "description": "通过 Claude3.5 和 GPT4 生成各种算法的可视化演示，包括字典树、链表、栈、速率限制、路径查找和哈希表。",
       "keywords": "算法可视化,数据结构,在线可视化"
     },
+    "intervalscheduling": {
+      "title": "区间调度",
+      "description": "通过结束时间排序的贪心策略，选择最多的不重叠区间。支持步进/自动播放、随机新增区间，时间轴高亮展示选择过程。",
+      "keywords": "贪心算法, 区间调度, 活动选择, 算法可视化"
+    },
+    "minimumspanningtree": {
+      "title": "最小生成树（Kruskal/Prim）",
+      "description": "可视化展示 Kruskal 与 Prim 两种算法，交互式步进/自动播放、随机生成图，候选与选中边高亮，并显示总权重。",
+      "keywords": "贪心算法, 最小生成树, Kruskal, Prim, 并查集, 算法可视化"
+    },
     "games": {
       "title": "开源 React 游戏",
       "description": "通过 Claude3.5 和 GPT4 生成各种经典游戏，如五子棋、中国象棋、俄罗斯方块等。这些游戏使用 React 编写，开源且可在线游玩。",
@@ -894,16 +916,6 @@
       "title": "在线汉诺塔游戏-汉诺塔算法可视化",
       "description": "经典的汉诺塔游戏求解算法可视化，从任意初始状态开始，用递归算法找到后续步骤。可以调整圆盘数量，选择手动或自动模式，获取提示，切换模式，源码开放。",
       "keywords": "汉诺塔,汉诺塔游戏,在线汉诺塔可视化,汉诺塔递归算法"
-    },
-    "intervalscheduling": {
-      "title": "贪心算法：区间调度",
-      "description": "通过结束时间排序的贪心策略，选择最多的不重叠区间。可视化时间轴展示选择过程，支持逐步执行与高亮标注。",
-      "keywords": "贪心算法, 区间调度, 活动选择, 算法可视化"
-    },
-    "minimumspanningtree": {
-      "title": "贪心算法：最小生成树（Kruskal/Prim）",
-      "description": "采用 Kruskal（并查集）或 Prim 算法，按权重选择边并避免成环，动态展示生成树的生长过程与交互选边。",
-      "keywords": "贪心算法, 最小生成树, Kruskal, Prim, 并查集, 算法可视化"
     },
     "binarysearchtree": {
       "title": "二叉搜索树可视化",

@@ -24,7 +24,7 @@ export default async function MinimumSpanningTreePage(props) {
   const { lang } = params;
   return (
     <>
-      <PageHeader lang={lang} pathname={`/${lang}/algorithms/minimumspanningtree`} />
+      <PageHeader lang={lang} pathname={`/${lang}/algorithms/minimumspanningtree`} title="minimumspanningtree" />
       <MinimumSpanningTreeVisualization lang={lang} />
       {/* Markdown is optional; skip if file missing to avoid build errors */}
       <BlogMarkdown lang={lang} directory="src/app/[lang]/algorithms/minimumspanningtree" />
