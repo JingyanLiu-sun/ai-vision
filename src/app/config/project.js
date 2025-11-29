@@ -105,7 +105,7 @@ const Projects = {
       slug: "heap",
       title: "heap_title",
       description: "heap_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240706_ai_gallery_heapv2.gif",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240706_ai_gallery_heapv2.gif",
       link: "/algorithms/heap/",
     },
     {
@@ -113,7 +113,7 @@ const Projects = {
       slug: "hanoitower",
       title: "hanoitower_title",
       description: "hanoitower_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240812_ai_gallery_hanoitower.webp",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240812_ai_gallery_hanoitower.webp",
       link: "/algorithms/hanoitower/",
     },
     {
@@ -121,7 +121,7 @@ const Projects = {
       slug: "hashtable",
       title: "hashtable_title",
       description: "hashtable_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240726_ai_gallery_hashtable.webp",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240726_ai_gallery_hashtable.webp",
       link: "/algorithms/hashtable/",
     },
     {
@@ -129,7 +129,7 @@ const Projects = {
       slug: "dpcoin",
       title: "dpcoin_title",
       description: "dpcoin_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240730_ai_gallery_dpcoin.webp",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240730_ai_gallery_dpcoin.webp",
       link: "/algorithms/dpcoin/",
     },
     {
@@ -137,7 +137,7 @@ const Projects = {
       slug: "trie",
       title: "trie_title",
       description: "trie_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240726_ai_gallery_trie.webp",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240726_ai_gallery_trie.webp",
       link: "/algorithms/trie/",
     },
     {
@@ -145,7 +145,7 @@ const Projects = {
       slug: "binarysearchtree",
       title: "binarysearchtree_title",
       description: "binarysearchtree_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240908_ai_gallery_binarysearchtree.webp",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240908_ai_gallery_binarysearchtree.webp",
       link: "/algorithms/binarysearchtree/",
     },
     {
@@ -153,7 +153,7 @@ const Projects = {
       slug: "bloomfilter",
       title: "bloomfilter_title",
       description: "bloomfilter_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240805_ai_gallery_bloomfilter.webp",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240805_ai_gallery_bloomfilter.webp",
       link: "/algorithms/bloomfilter/",
     },
     {
@@ -161,7 +161,7 @@ const Projects = {
       slug: "dijkstra",
       title: "dijkstra_title",
       description: "dijkstra_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240709_ai_gallery_dijkstra_v3.gif",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240709_ai_gallery_dijkstra_v3.gif",
       link: "/algorithms/dijkstra/",
     },
     {
@@ -169,7 +169,7 @@ const Projects = {
       slug: "stack",
       title: "stack_title",
       description: "stack_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240726_ai_gallery_stack.webp",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240726_ai_gallery_stack.webp",
       link: "/algorithms/stack/",
     },
     {
@@ -177,7 +177,7 @@ const Projects = {
       slug: "hashring",
       title: "hashring_title",
       description: "hashring_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240801_ai_gallery_hashring.webp",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240801_ai_gallery_hashring.webp",
       link: "/algorithms/hashring/",
     },
     {
@@ -185,7 +185,7 @@ const Projects = {
       slug: "jumphash",
       title: "jumphash_title",
       description: "jumphash_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240809_ai_gallery_jumphash.webp",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240809_ai_gallery_jumphash.webp",
       link: "/algorithms/jumphash/",
     },
     {
@@ -193,7 +193,7 @@ const Projects = {
       slug: "skiplist",
       title: "skiplist_title",
       description: "skiplist_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240728_ai_gallery_skiplist.webp",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240728_ai_gallery_skiplist.webp",
       link: "/algorithms/skiplist/",
     },
     {
@@ -201,7 +201,7 @@ const Projects = {
       slug: "astar",
       title: "astar_title",
       description: "astar_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240706_ai_gallery_astar_path.gif",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240706_ai_gallery_astar_path.gif",
       link: "/algorithms/astar/",
     },
     {
@@ -209,7 +209,7 @@ const Projects = {
       slug: "bfs_path",
       title: "bfs_path_title",
       description: "bfs_path_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240706_ai_gallery_bfs_path.gif",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240706_ai_gallery_bfs_path.gif",
       link: "/algorithms/bfs_path/",
     },
     {
@@ -217,7 +217,7 @@ const Projects = {
       slug: "linkedlist",
       title: "linkedlist_title",
       description: "linkedlist_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240726_ai_gallery_linkedlist.webp",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240726_ai_gallery_linkedlist.webp",
       link: "/algorithms/linkedlist/",
     },
     {
@@ -225,7 +225,7 @@ const Projects = {
       slug: "ratelimit",
       title: "ratelimit_title",
       description: "ratelimit_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240716_ai_gallery_ratelimit.gif",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240716_ai_gallery_ratelimit.gif",
       link: "/algorithms/ratelimit/",
     },
     {
@@ -233,7 +233,7 @@ const Projects = {
       slug: "tokenbucket",
       title: "tokenbucket_title",
       description: "tokenbucket_description",
-      image: "https://slefboot-1251736664.file.myqcloud.com/20240726_ai_gallery_tokenbucket.webp",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/20240726_ai_gallery_tokenbucket.webp",
       link: "/algorithms/tokenbucket/",
     },
     {

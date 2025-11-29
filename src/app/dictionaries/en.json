@@ -196,6 +196,8 @@
   "earliest_start": "Earliest start",
   "shortest_duration": "Shortest duration",
   "prim": "Prim",
+  "view_docs": "View Docs",
+  "random_layout": "Random Layout",
   "enterKeyToSearch": "Enter key to search",
   "enterKeyToDelete": "Enter key to delete",
   "key": "Key",

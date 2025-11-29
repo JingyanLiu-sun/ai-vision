@@ -196,6 +196,8 @@
   "earliest_start": "最早开始",
   "shortest_duration": "最短持续",
   "prim": "Prim",
+  "view_docs": "查看文档",
+  "random_layout": "随机布局",
   "enterKeyToSearch": "输入要搜索的键",
   "enterKeyToDelete": "输入要删除的键",
   "key": "键",
