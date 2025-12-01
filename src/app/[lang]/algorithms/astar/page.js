@@ -30,13 +30,12 @@ export default async function AstarPage(props) {
     lang
   } = params;
 
+  const dict = await getDictionary(lang);
+
   return (
     <>
-      <PageHeader lang={lang} pathname={`/${lang}/algorithms/astar`} />
+      <PageHeader lang={lang} pathname={`/${lang}/algorithms/astar`} docsPathname={`/${lang}/algorithms/astar/docs`} />
       <AStarPathFind lang={lang} />
-      <div className="mt-6 flex justify-center">
-        <Link href={`/${lang}/algorithms/astar/docs`} className="px-4 py-2 bg-gray-800 text-white rounded">View Docs</Link>
-      </div>
       <CommonComments lang={lang} />
     </>
   );

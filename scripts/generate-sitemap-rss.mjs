@@ -122,7 +122,8 @@ async function generateSitemapAndRss() {
               console.error("Invalid metadata structure");
             }
           } else {
-            console.error("No Meta function call found");
+            // Skip pages that don't have Meta info (like docs pages or intermediate pages)
+            // console.warn(`Skipping page without Meta: ${page}`);
           }
         }
       } catch (error) {

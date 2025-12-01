@@ -29,14 +29,12 @@ export default async function HeapPage(props) {
   const {
     lang
   } = params;
+  const dict = await getDictionary(lang);
 
   return (
     <>
-      <PageHeader lang={lang} pathname={`/${lang}/algorithms/heap`} />
+      <PageHeader lang={lang} pathname={`/${lang}/algorithms/heap`} docsPathname={`/${lang}/algorithms/heap/docs`} />
       <HeapVisualization lang={lang} />
-      <div className="mt-6 flex justify-center">
-        <Link href={`/${lang}/algorithms/heap/docs`} className="px-4 py-2 bg-gray-800 text-white rounded">View Docs</Link>
-      </div>
       <CommonComments lang={lang} />
     </>
   );

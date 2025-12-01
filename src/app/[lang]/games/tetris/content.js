@@ -300,7 +300,7 @@ const TetrisGame = () => {
   };
 
   if (!isClient) {
-    return <div>Loading...</div>;
+    return <div>{t('loading')}</div>;
   }
 
   return (

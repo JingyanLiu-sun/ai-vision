@@ -437,9 +437,9 @@ const HashTable = () => {
                 onChange={(e) => changeHashFunction(e.target.value)}
                 className="w-2/3 p-2 border rounded"
               >
-                <option value="murmur3">MurmurHash3</option>
+                <option value="murmur3">{t('murmurhash3')}</option>
                 <option value="simple">{t('simpleHash')}</option>
-                <option value="djb2">DJB2 Hash</option>
+                <option value="djb2">{t('djb2')}</option>
               </select>
             </div>
 

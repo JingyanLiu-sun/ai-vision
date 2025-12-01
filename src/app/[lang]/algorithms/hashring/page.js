@@ -29,14 +29,12 @@ export default async function HashRingPage(props) {
   const {
     lang
   } = params;
+  const dict = await getDictionary(lang);
 
   return (
     <>
-      <PageHeader lang={lang} pathname={`/${lang}/algorithms/hashring`} />
+      <PageHeader lang={lang} pathname={`/${lang}/algorithms/hashring`} docsPathname={`/${lang}/algorithms/hashring/docs`} />
       <ConsistentHashRing lang={lang} />
-      <div className="mt-6 flex justify-center">
-        <Link href={`/${lang}/algorithms/hashring/docs`} className="px-4 py-2 bg-gray-800 text-white rounded">View Docs</Link>
-      </div>
       <CommonComments lang={lang} />
     </>
   );

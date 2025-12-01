@@ -7,7 +7,7 @@ import Link from "next/link";
 import { getDictionary } from "@/app/dictionaries";
 import ShareButtons from "./ShareButtons";
 
-async function PageHeader({ lang, pathname, title }) {
+async function PageHeader({ lang, pathname, title, docsPathname }) {
   const dict = await getDictionary(lang);
 
   const getTitle = () => {
@@ -86,6 +86,14 @@ async function PageHeader({ lang, pathname, title }) {
           </Link>
         </div>
       </div>
+      {docsPathname && (
+        <Link
+          href={docsPathname}
+          className="rounded-full border border-blue-400 px-4 py-2 text-sm font-semibold text-blue-500 transition hover:bg-blue-50"
+        >
+          {dict.view_docs}
+        </Link>
+      )}
     </div>
   );
 }

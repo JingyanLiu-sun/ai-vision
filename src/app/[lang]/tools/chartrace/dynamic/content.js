@@ -11,21 +11,21 @@ import { faWrench } from "@fortawesome/free-solid-svg-icons";
 export default function DynamicChartsIndex({ lang }) {
   const { t } = useI18n();
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedSource, setSelectedSource] = useState('All');
+  const [selectedSource, setSelectedSource] = useState(t('all'));
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
 
   // Get unique data sources
   const dataSources = useMemo(() => {
-    return ['All', ...new Set(dynamicChartConfigs.map(config => config.dataSource || 'Unknown'))];
-  }, []);
+    return [t('all'), ...new Set(dynamicChartConfigs.map(config => config.dataSource || t('unknown')))];
+  }, [t]);
 
   // Filter and search configs
   const filteredConfigs = useMemo(() => {
     return dynamicChartConfigs.filter(config => {
       const title = t('chartrace')[config.id]?.title || '';
       const intro = t('chartrace')[config.id]?.intro || '';
-      return (selectedSource === 'All' || config.dataSource === selectedSource) &&
+      return (selectedSource === t('all') || config.dataSource === selectedSource) &&
         (title.toLowerCase().includes(searchTerm.toLowerCase()) ||
          (intro && intro.toLowerCase().includes(searchTerm.toLowerCase())));
     });
@@ -114,7 +114,7 @@ export default function DynamicChartsIndex({ lang }) {
                   <p>{t('chartrace')[config.id]?.intro}</p>
                 </td>
                 <td className="py-3 px-6 text-left">
-                  <p>{config.dataSource || 'Various sources'}</p>
+                  <p>{config.dataSource || t('variousSources')}</p>
                 </td>
               </tr>
             ))}
@@ -129,19 +129,19 @@ export default function DynamicChartsIndex({ lang }) {
             disabled={currentPage === 1}
             className="px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-300"
           >
-            Previous
+            {t('previous')}
           </button>
           <button
             onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
             className="px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-300"
           >
-            Next
+            {t('next')}
           </button>
-          <span className="self-center">Page {currentPage} of {totalPages}</span>
+          <span className="self-center">{t('page_of', { current: currentPage, total: totalPages })}</span>
         </div>
         <div className="flex items-center gap-2">
-          <span>Show</span>
+          <span>{t('show')}</span>
           <select
             className="p-2 border rounded"
             value={itemsPerPage}
@@ -151,7 +151,7 @@ export default function DynamicChartsIndex({ lang }) {
               <option key={num} value={num}>{num}</option>
             ))}
           </select>
-          <span>per page</span>
+          <span>{t('per_page')}</span>
         </div>
       </div>
       <CommonComments lang={lang} />

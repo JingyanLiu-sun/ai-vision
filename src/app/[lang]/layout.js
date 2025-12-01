@@ -7,6 +7,8 @@ import { I18nProvider } from "@/app/i18n/client";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from 'next/script';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import BackgroundController from "@/app/components/BackgroundController";
+
 
 const SUPPORTED_LANGUAGES = ['en', 'zh'];
 const CATEGORIES = ["algorithms"];

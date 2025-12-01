@@ -29,14 +29,12 @@ export default async function BinarySearchTreePage(props) {
   const {
     lang
   } = params;
+  const dict = await getDictionary(lang);
 
   return (
     <>
-      <PageHeader lang={lang} pathname={`/${lang}/algorithms/binarysearchtree`} />
+      <PageHeader lang={lang} pathname={`/${lang}/algorithms/binarysearchtree`} docsPathname={`/${lang}/algorithms/binarysearchtree/docs`} />
       <BinarySearchTreeVisualization lang={lang} />
-      <div className="mt-6 flex justify-center">
-        <Link href={`/${lang}/algorithms/binarysearchtree/docs`} className="px-4 py-2 bg-gray-800 text-white rounded">View Docs</Link>
-      </div>
       <CommonComments lang={lang} />
     </>
   );

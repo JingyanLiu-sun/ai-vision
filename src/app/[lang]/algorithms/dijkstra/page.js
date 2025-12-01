@@ -38,14 +38,12 @@ export default async function DijkstraPage(props) {
   const {
     lang
   } = params;
+  const dict = await getDictionary(lang);
 
   return (
     <>
-      <PageHeader lang={lang} pathname={`/${lang}/algorithms/dijkstra`} />
+      <PageHeader lang={lang} pathname={`/${lang}/algorithms/dijkstra`} docsPathname={`/${lang}/algorithms/dijkstra/docs`} />
       <DijkstraVisualization lang={lang} />
-      <div className="mt-6 flex justify-center">
-        <Link href={`/${lang}/algorithms/dijkstra/docs`} className="px-4 py-2 bg-gray-800 text-white rounded">View Docs</Link>
-      </div>
       <CommonComments lang={lang} />
     </>
   );
