@@ -39,3 +39,5 @@ out/
 .cursor/
 .swc/
 .pnpm-store/*
+
+/src/generated/prisma
