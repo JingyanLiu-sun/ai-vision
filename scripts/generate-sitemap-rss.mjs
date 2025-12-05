@@ -3,10 +3,9 @@ import path from "path";
 import RSS from "rss";
 import matter from "gray-matter";
 
-// 修改导入语句
-import { dynamicChartConfigs } from '../src/app/[lang]/tools/chartrace/dynamicChartConfigs.js';
-import documentTemplatesModule from '../src/app/[lang]/tools/gendocx/templates.js';
-const { documentTemplates } = documentTemplatesModule;
+// 可选依赖：在不存在对应工具模块时，跳过动态路由生成
+let dynamicChartConfigs = [];
+let documentTemplates = [];
 
 const DOMAIN = "https://gallery.selfboot.cn";
 const LANGUAGES = ["en", "zh"];
@@ -57,7 +56,7 @@ async function generateSitemapAndRss() {
 
       try {
         const content = fs.readFileSync(page, "utf8");
-        
+
         if (route.includes("[chartId]")) {
           // Handle dynamic chart routes
           for (const config of dynamicChartConfigs) {
@@ -136,7 +135,7 @@ async function generateSitemapAndRss() {
     for (const post of blogPosts) {
       const content = fs.readFileSync(post, "utf8");
       const { data, content: postContent } = matter(content);
-      
+
       const slug = path.basename(path.dirname(post));
       const url = `${DOMAIN}/${lang}/blog/${slug}`;
 

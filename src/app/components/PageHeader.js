@@ -89,7 +89,7 @@ async function PageHeader({ lang, pathname, title, docsPathname }) {
       {docsPathname && (
         <Link
           href={docsPathname}
-          className="rounded-full border border-blue-400 px-4 py-2 text-sm font-semibold text-blue-500 transition hover:bg-blue-50"
+          className="rounded-md bg-blue-100 border border-blue-200 px-3 py-1.5 text-sm font-medium text-blue-800 transition hover:bg-blue-200"
         >
           {dict.view_docs}
         </Link>

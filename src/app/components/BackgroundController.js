@@ -7,7 +7,8 @@ export default function BackgroundController() {
 
   useEffect(() => {
     const isAlgorithms = /\/algorithms(\/|$)/.test(pathname || "");
-    if (isAlgorithms) {
+    const isDocs = /\/algorithms\/.+\/docs(\/|$)/.test(pathname || "");
+    if (isAlgorithms && !isDocs) {
       document.body.classList.add("algorithms-bg");
     } else {
       document.body.classList.remove("algorithms-bg");

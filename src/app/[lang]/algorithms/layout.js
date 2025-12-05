@@ -1,3 +1,4 @@
+// 客户端组件，包含前端渲染需声明 "use client"
 "use client";
 import React from "react";
 import ParticleBackground from "../../components/ParticleBackground";
@@ -10,6 +11,7 @@ export default function Layout(props) {
 
   return (
     <>
+      {/* 非文档页面才添加背景 */}
       {!isDocs && (
         <div className="fixed inset-0 -z-10">
           <ParticleBackground />

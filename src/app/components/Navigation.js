@@ -5,6 +5,7 @@ import LanguageSwitcher from "@/app/components/LanguageSwitcher";
 import ClientActiveLink from "@/app/components/ActiveLink";
 import { getDictionary } from "@/app/dictionaries";
 import MiniProgramCTA from "@/app/components/MiniProgramCTA";
+import UserMenu from "@/app/components/UserMenu";
 
 export default async function Navigation({ categories, lang, pathname }) {
   const dict = await getDictionary(lang);
@@ -41,12 +42,13 @@ export default async function Navigation({ categories, lang, pathname }) {
             href="https://github.com/JingyanLiu-sun/ai-vision"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center rounded-full border border-gray-200 px-4 py-2 text-gray-600 transition hover:border-gray-300 hover:text-gray-800"
+            className="flex items-center justify中心 rounded-full border border-gray-200 px-4 py-2 text-gray-600 transition hover:border-gray-300 hover:text-gray-800"
           >
             <FontAwesomeIcon icon={faGithub} size="lg" />
             <span className="ml-2">Star</span>
           </a>
           <LanguageSwitcher currentLang={lang} currentPath={pathname} />
+          <UserMenu lang={lang} />
         </div>
       </div>
     </>

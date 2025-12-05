@@ -1,0 +1,20 @@
+services:
+  web:
+    image: node:22-bullseye-slim
+    working_dir: /app
+    command: bash -lc "apt-get update && apt-get install -y python3 make g++ && corepack enable && corepack prepare pnpm@9.12.1 --activate && pnpm install --no-frozen-lockfile && pnpm run dev"
+    ports:
+      - "3000:3000"
+    environment:
+      AUTH_SECRET: "dev-secret-change-me"
+      ADMIN_RESET_KEY: "admin-reset-change-me"
+      SQLITE_DB_PATH: "/data/sqlite/app.db"
+      NODE_ENV: "development"
+      CHOKIDAR_USEPOLLING: "1"
+      WATCHPACK_POLLING: "true"
+    volumes:
+      - .:/app
+      - ai_gallery_db:/data/sqlite
+      - /app/node_modules
+volumes:
+  ai_gallery_db:

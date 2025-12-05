@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import ResponsiveWebPImage from "@/app/components/ResponseImage";
 import Projects from "@/app/config/project";

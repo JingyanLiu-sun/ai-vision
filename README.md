@@ -43,6 +43,16 @@
 
 5. 打开浏览器并访问 `http://localhost:3000` 就可以查看了。
 
+6.生产部署（Dockerfile + Compose）
+- 构建并启动： docker compose up -d --build
+- 查看日志： docker compose logs -n 100 --tail=100
+- 停止： docker compose down
+
+开发模式（不构建镜像，直接挂载运行）
+- 适合快速在容器里跑 pnpm install 和 pnpm dev ，同时使用持久卷存储 SQLite。
+- 文件： docker-compose.dev.yml
+- 启动： docker compose -f docker-compose.dev.yml up -d
+- 查看日志： docker compose -f docker-compose.dev.yml logs -n 200 --tail=200
 当然中间遇到任何问题，尝试去用 AI 解决吧～
 
 # 使用 AI 的感悟

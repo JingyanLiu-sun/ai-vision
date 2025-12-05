@@ -34,6 +34,7 @@ export default async function Algorithms(props) {
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4">{dict.algorithms_title}</h1>
+      {/* 算法分类网格 */}
       <AlgorithmCategoryGrid lang={lang} />
     </div>
   );

@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      AUTH_SECRET: "dev-secret-change-me"
+      ADMIN_RESET_KEY: "admin-reset-change-me"
+      SQLITE_DB_PATH: "/data/sqlite/app.db"
+    volumes:
+      - ai_gallery_db:/data/sqlite
+    restart: unless-stopped
+volumes:
+  ai_gallery_db:

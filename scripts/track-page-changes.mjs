@@ -29,53 +29,31 @@ async function getRecentPageUrls() {
           .replace("src/app/[lang]", "")
           .replace("/page.js", "")
           .replace("/index", "");
+        // 获取博客文章
+        const blogPosts = await globby([`src/posts/*/${lang}.md`]);
+        for (const post of blogPosts) {
+          const content = fs.readFileSync(post, "utf8");
+          const { data } = matter(content);
+          const postDate = new Date(data.date).toISOString().split('T')[0];
 
-        if (route.includes("[chartId]")) {
-          // 处理动态图表路由
-          const { dynamicChartConfigs } = await import("../src/app/[lang]/tools/chartrace/dynamicChartConfigs.js");
-          for (const config of dynamicChartConfigs) {
-            if (config.updatedDate?.split("T")[0] === today) {
-              const dynamicRoute = route.replace("[chartId]", config.id);
-              urls.add(`${DOMAIN}/${lang}${dynamicRoute}`);
-            }
+          // 只处理今天发布的文章
+          if (postDate === today) {
+            const slug = path.basename(path.dirname(post));
+            urls.add(`${DOMAIN}/${lang}/blog/${slug}`);
           }
-        } else if (route.includes("[id]")) {
-          const { documentTemplates } = await import("../src/app/[lang]/tools/gendocx/templates.js");
-          for (const template of documentTemplates) {
-            if (template.updatedDate?.split("T")[0] === today) {
-              const dynamicRoute = route.replace("[id]", template.id);
-              urls.add(`${DOMAIN}/${lang}${dynamicRoute}`);
-            }
-          }
-        } else {
-          urls.add(`${DOMAIN}/${lang}${route}`);
         }
       }
-    }
 
-    // 获取博客文章
-    const blogPosts = await globby([`src/posts/*/${lang}.md`]);
-    for (const post of blogPosts) {
-      const content = fs.readFileSync(post, "utf8");
-      const { data } = matter(content);
-      const postDate = new Date(data.date).toISOString().split('T')[0];
-
-      // 只处理今天发布的文章
-      if (postDate === today) {
-        const slug = path.basename(path.dirname(post));
-        urls.add(`${DOMAIN}/${lang}/blog/${slug}`);
+      const recentUrls = Array.from(urls);
+      if (recentUrls.length > 0) {
+        console.log('今天有更新的页面');
+      } else {
+        console.log('今天没有更新的页面');
       }
+
+      return recentUrls;
     }
   }
-
-  const recentUrls = Array.from(urls);
-  if (recentUrls.length > 0) {
-    console.log('今天有更新的页面');
-  } else {
-    console.log('今天没有更新的页面');
-  }
-
-  return recentUrls;
 }
 
-export { getRecentPageUrls };
+export { getRecentPageUrls }

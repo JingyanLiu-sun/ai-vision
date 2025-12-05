@@ -1,6 +1,7 @@
 import { getDictionary } from "@/app/dictionaries";
 import { PageMeta } from "@/app/components/Meta";
 
+// 首页元数据（SSG），用于 SEO 优化与社交媒体分享
 export async function generateMetadata(props) {
   const params = await props.params;
 
@@ -19,6 +20,7 @@ export async function generateMetadata(props) {
   });
 }
 
+// 首页内容（SSG），用于展示算法专区与文档中心
 export default async function Home(props) {
   const params = await props.params;
 
