@@ -42,7 +42,12 @@ export function middleware(request) {
     pathname.endsWith('.docx') ||
     pathname.endsWith('.txt') ||
     pathname.endsWith('.ico') || 
-    pathname.endsWith('.png')
+    pathname.endsWith('.png') ||
+    pathname.endsWith('.jpg') ||
+    pathname.endsWith('.jpeg') ||
+    pathname.endsWith('.webp') ||
+    pathname.endsWith('.svg') ||
+    pathname.endsWith('.gif')
   ) {
     // For static files, continue the request without changes.
     return NextResponse.next();

@@ -343,6 +343,13 @@
   "mayExist": "May exist in set",
   "definitelyNotExist": "Definitely not in set",
   "jumphash_title": "JumpHash Visualization",
+  "depth_limit": "Depth Limit",
+  "target_node": "Target Node",
+  "current_node": "Current Node",
+  "in_stack": "In Stack",
+  "current_depth": "Current Depth",
+  "visited_count": "Visited Count",
+  "start_node": "Start Node",
   "jumphash_description": "JumpHash is a hash algorithm invented by Google for load balancing in distributed systems. This page shows JumpHash algorithm working principle, by adjusting number of buckets and keys, observe key distribution.",
   "hashVisualization": "Hash Visualization",
   "jumpHash": "Jump Hash",
@@ -509,6 +516,8 @@
   "fileUpload_sizeExceeded": "File size cannot exceed {{size}}MB",
   "game_settings": "Game Settings",
   "board_size": "Board Size",
+  "start_position": "Start Position",
+  "warnsdorff_rule": "Warnsdorff Heuristic",
   "difficulty": "Difficulty",
   "difficulty_easy": "Easy",
   "difficulty_medium": "Medium",
@@ -943,16 +952,6 @@
       "description": "Online visualization of Tower of Hanoi game solution. Can set number of disks and movement speed, choose manual or automatic mode, get hints, switch modes, open source code.",
       "keywords": "Tower of Hanoi, Tower of Hanoi game, online Tower of Hanoi visualization, Tower of Hanoi recursive algorithm"
     },
-    "intervalscheduling": {
-      "title": "Greedy: Interval Scheduling",
-      "description": "Greedy algorithm for selecting maximum non-overlapping intervals. Sort intervals by finish time and step through the selection with timeline visualization.",
-      "keywords": "Greedy, interval scheduling, activity selection, algorithm visualization"
-    },
-    "minimumspanningtree": {
-      "title": "Greedy: Minimum Spanning Tree (Kruskal/Prim)",
-      "description": "Visualize MST via Kruskal (union-find) and Prim. Interactively select edges by weight and observe spanning tree growth while avoiding cycles.",
-      "keywords": "Greedy, MST, Kruskal, Prim, union-find, algorithm visualization"
-    },
     "binarysearchtree": {
       "title": "Binary Search Tree Visualization",
       "description": "Explore binary search tree algorithm through interactive visualization. Can set number of nodes and initialization method, then intuitively see node insertion, search, deletion process, can deepen understanding of binary search tree working principle.",
@@ -1049,5 +1048,35 @@
   "lasermaze_tip_1": "Reflection block is located at center of grid, laser only reflects at midpoint of edges.",
   "lasermaze_tip_2": "Laser stops when hitting boundary, plan path in advance to let beam sweep all green targets.",
   "lasermaze_tip_3": "Drag and release block to place, try different combinations to find new reflection angles.",
-  "lasermaze_difficulty_label": "Difficulty {{value}}"
+  "lasermaze_difficulty_label": "Difficulty {{value}}",
+  "nqueens_board_size": "Board Size",
+  "solutions_count": "Solutions found: {{count}}",
+  "current_row": "Current row: {{row}}"
+  ,
+  "show_attacks": "Highlight conflicts",
+  "find_all_solutions": "Find all solutions",
+  "trace_log": "Search Trace",
+  "trace_try": "Try placing at row {{r}}, col {{c}}",
+  "trace_place": "Placed at row {{r}}, col {{c}}",
+  "trace_backtrack": "Backtrack: remove queen at row {{r}}, col {{c}}",
+  "algorithms_categories": {
+    "backtracking": "Backtracking",
+    "branch-and-bound": "Branch and Bound",
+    "brute-force": "Brute Force",
+    "divide-and-conquer": "Divide and Conquer",
+    "dynamic-programming": "Dynamic Programming",
+    "greedy": "Greedy",
+    "simple-recursive": "Simple Recursive",
+    "data-structures": "Data Structures"
+  },
+  "algorithms_categories_desc": {
+    "backtracking": "Backtracking explores solution space by trial and undo, suitable for combinational search and constraint satisfaction.",
+    "branch-and-bound": "Branch and Bound adds upper/lower bound pruning on brute-force to effectively reduce search space.",
+    "brute-force": "Brute Force enumerates all possibilities to find optimal or feasible solutions, suitable for small-scale problems.",
+    "divide-and-conquer": "Divide and Conquer splits problems into subproblems, solves them and merges results, common in sorting and searching.",
+    "dynamic-programming": "Dynamic Programming avoids repeated computation via memoization or tabulation, solves optimal substructure with overlapping subproblems.",
+    "greedy": "Greedy makes locally optimal choices hoping for globally good solutions, often used in interval scheduling and graph algorithms.",
+    "simple-recursive": "Simple Recursive defines solutions via self-calling functions, good for clear-structured recursion and educational examples.",
+    "data-structures": "Data Structures organize and access data efficiently, underpinning performant algorithms and engineering practice."
+  }
 }

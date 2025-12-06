@@ -9,13 +9,13 @@ import ProjectGrid from '@/app/components/ProjectGrid';
 // - Title resolves via i18n dictionary, or falls back to `labels` below
 
 const categoryAlgorithms = {
-  'backtracking': ['hanoitower', 'nqueens', 'knightstour'],
+  'backtracking': ['nqueens', 'knightstour'],
   'branch-and-bound': ['bfs_path', 'depthlimitedsearch'],
   'brute-force': ['bubblesort', 'heap'],
   'divide-and-conquer': ['quicksort', 'binarysearchtree', 'skiplist'],
   'dynamic-programming': ['dpcoin', 'floydwarshall'],
   'greedy': ['astar', 'dijkstra', 'intervalscheduling', 'minimumspanningtree'],
-  'simple-recursive': ['factorial'],
+  'simple-recursive': ['hanoitower', 'factorial'],
   'data-structures': ['linkedlist', 'stack', 'hashtable', 'trie'],
 };
 
@@ -25,22 +25,9 @@ export default async function AlgorithmCategoryPage(props) {
   const algorithmSlugs = categoryAlgorithms[category] || [];
   const dict = await getDictionary(lang);
 
-  const labels = {
-    'backtracking': { zh: '回溯法', en: 'Backtracking' },
-    'branch-and-bound': { zh: '分支限界', en: 'Branch and Bound' },
-    'brute-force': { zh: '穷举法', en: 'Brute Force' },
-    'divide-and-conquer': { zh: '分治', en: 'Divide and Conquer' },
-    'dynamic-programming': { zh: '动态规划', en: 'Dynamic Programming' },
-    'greedy': { zh: '贪心算法', en: 'Greedy' },
-    'simple-recursive': { zh: '简单递归', en: 'Simple Recursive' },
-    'data-structures': { zh: '数据结构', en: 'Data Structures' },
-  };
-
   const display = (dict.algorithms_categories && dict.algorithms_categories[category])
     ? dict.algorithms_categories[category]
-    : (labels[category]
-        ? (lang === 'zh' ? labels[category].zh : labels[category].en)
-        : (lang === 'zh' ? category : category.replace(/-/g, ' ').toUpperCase()));
+    : (lang === 'zh' ? category : category.replace(/-/g, ' ').toUpperCase());
 
   return (
     <div>

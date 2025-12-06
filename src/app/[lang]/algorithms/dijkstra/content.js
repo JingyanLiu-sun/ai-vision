@@ -472,6 +472,14 @@ const DijkstraVisualization = () => {
   return (
     <div className="flex w-full h-full overflow-auto">
       <div className="w-3/5 h-full relative">
+        <div className="absolute top-4 right-4 z-10">
+          <a
+            href={`/` + (typeof window !== 'undefined' ? window.location.pathname.split('/')[1] : '') + `/algorithms/dijkstra/docs`}
+            className="px-3 py-1 rounded bg-gray-900 text-white hover:bg-gray-800 transition shadow-sm"
+          >
+            {t("view_docs")}
+          </a>
+        </div>
         <div className="absolute top-4 left-4 flex flex-col space-y-2 z-10">
           <div className="flex items-center">
             <label htmlFor="startNodeSelect" className="mr-2 flex-none">

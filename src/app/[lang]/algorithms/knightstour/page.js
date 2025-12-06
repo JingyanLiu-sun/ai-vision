@@ -2,8 +2,7 @@ import { getDictionary } from "@/app/dictionaries";
 import { PageMeta } from "@/app/components/Meta";
 import PageHeader from "@/app/components/PageHeader";
 import CommonComments from "@/app/components/GiscusComments";
-import BlogMarkdown from "@/app/components/BlogMarkdown";
-import PlaceholderVisualization from "./content";
+import KnightsTourVisualization from "./content";
 
 export async function generateMetadata(props) {
   const params = await props.params;
@@ -24,11 +23,9 @@ export default async function KnightsTourPage(props) {
   const { lang } = params;
   return (
     <>
-      <PageHeader lang={lang} pathname={`/${lang}/algorithms/knightstour`} title="Knight's Tour Problem" />
-      <PlaceholderVisualization lang={lang} />
-      <BlogMarkdown lang={lang} directory="src/app/[lang]/algorithms/knightstour" />
+      <PageHeader lang={lang} pathname={`/${lang}/algorithms/knightstour`} title="Knight's Tour Problem" docsPathname={`/${lang}/algorithms/knightstour/docs`} />
+      <KnightsTourVisualization lang={lang} />
       <CommonComments lang={lang} />
     </>
   );
 }
-

@@ -23,7 +23,7 @@ export default function SignInPage(props) {
       setError(msg || "登录失败");
       return;
     }
-    window.location.href = `/${lang}`;
+    window.location.href = `/${lang}/algorithms`;
   };
 
   return (

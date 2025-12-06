@@ -12,12 +12,12 @@ export default function SignOutPage(props) {
         const res = await fetch(`/api/auth/logout`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ callbackUrl: `/${lang}` }),
+          body: JSON.stringify({ callbackUrl: `/${lang}/algorithms` }),
           redirect: "manual",
         });
-        window.location.href = `/${lang}`;
+        window.location.href = `/${lang}/algorithms`;
       } catch {
-        window.location.href = `/${lang}`;
+        window.location.href = `/${lang}/algorithms`;
       }
     };
     // 自动退出并重定向
@@ -29,7 +29,7 @@ export default function SignOutPage(props) {
         <h1 className="text-2xl font-bold mb-3 text-gray-900">{t("signout_title")}</h1>
         <p className="text-sm text-gray-600 mb-6">{t("signout_subtitle")}</p>
         <button
-          onClick={() => { window.location.href = `/${lang}`; }}
+          onClick={() => { window.location.href = `/${lang}/algorithms`; }}
           className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-gray-900 text-white hover:bg-gray-800 transition shadow-sm"
         >
           {t("signout_confirm")}

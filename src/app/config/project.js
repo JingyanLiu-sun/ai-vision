@@ -158,7 +158,7 @@ const Projects = {
       slug: "nqueens",
       title: "N-Queens Problem",
       description: "Placeholder: N-Queens backtracking visualization",
-      image: "/logo512.png",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/nqueen.gif",
       link: "/algorithms/nqueens/",
     },
     {
@@ -166,7 +166,7 @@ const Projects = {
       slug: "knightstour",
       title: "Knight's Tour Problem",
       description: "Placeholder: Knight's Tour backtracking visualization",
-      image: "/logo512.png",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/knights.gif",
       link: "/algorithms/knightstour/",
     },
     {
@@ -174,7 +174,7 @@ const Projects = {
       slug: "depthlimitedsearch",
       title: "Depth-Limited Search",
       description: "Placeholder: Depth-limited search demonstration",
-      image: "/logo512.png",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/DFS.gif",
       link: "/algorithms/depthlimitedsearch/",
     },
     {
