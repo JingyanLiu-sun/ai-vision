@@ -2,8 +2,7 @@ import { getDictionary } from "@/app/dictionaries";
 import { PageMeta } from "@/app/components/Meta";
 import PageHeader from "@/app/components/PageHeader";
 import CommonComments from "@/app/components/GiscusComments";
-import BlogMarkdown from "@/app/components/BlogMarkdown";
-import PlaceholderVisualization from "./content";
+import QuickSortVisualization from "./content";
 
 export async function generateMetadata(props) {
   const params = await props.params;
@@ -11,11 +10,11 @@ export async function generateMetadata(props) {
   const dict = await getDictionary(lang);
   return PageMeta({
     title: dict.seo.quicksort?.title || "Quicksort",
-    description: dict.seo.quicksort?.description || "Placeholder demo for Quicksort",
-    keywords: dict.seo.quicksort?.keywords || "Quicksort, divide and conquer",
+    description: dict.seo.quicksort?.description || "Interactive visualization for Quicksort",
+    keywords: dict.seo.quicksort?.keywords || "Quicksort, divide and conquer, visualization",
     canonicalUrl: `https://gallery.selfboot.cn/${lang}/algorithms/quicksort`,
-    publishedDate: "2025-12-04T00:00:00.000Z",
-    updatedDate: "2025-12-04T00:00:00.000Z",
+    publishedDate: "2025-12-07T00:00:00.000Z",
+    updatedDate: "2025-12-07T00:00:00.000Z",
   });
 }
 
@@ -24,11 +23,14 @@ export default async function QuicksortPage(props) {
   const { lang } = params;
   return (
     <>
-      <PageHeader lang={lang} pathname={`/${lang}/algorithms/quicksort`} title="Quicksort" />
-      <PlaceholderVisualization lang={lang} />
-      <BlogMarkdown lang={lang} directory="src/app/[lang]/algorithms/quicksort" />
+      <PageHeader 
+        lang={lang} 
+        pathname={`/${lang}/algorithms/quicksort`} 
+        title="Quicksort" 
+        docsPathname={`/${lang}/algorithms/quicksort/docs`}
+      />
+      <QuickSortVisualization lang={lang} />
       <CommonComments lang={lang} />
     </>
   );
 }
-

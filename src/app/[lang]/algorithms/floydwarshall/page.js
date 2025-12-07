@@ -2,7 +2,6 @@ import { getDictionary } from "@/app/dictionaries";
 import { PageMeta } from "@/app/components/Meta";
 import PageHeader from "@/app/components/PageHeader";
 import CommonComments from "@/app/components/GiscusComments";
-import BlogMarkdown from "@/app/components/BlogMarkdown";
 import PlaceholderVisualization from "./content";
 
 export async function generateMetadata(props) {
@@ -24,11 +23,14 @@ export default async function FloydWarshallPage(props) {
   const { lang } = params;
   return (
     <>
-      <PageHeader lang={lang} pathname={`/${lang}/algorithms/floydwarshall`} title="Floyd-Warshall Shortest Paths" />
+      <PageHeader 
+        lang={lang} 
+        pathname={`/${lang}/algorithms/floydwarshall`} 
+        title="Floyd-Warshall Shortest Paths"
+        docsPathname={`/${lang}/algorithms/floydwarshall/docs`} 
+      />
       <PlaceholderVisualization lang={lang} />
-      <BlogMarkdown lang={lang} directory="src/app/[lang]/algorithms/floydwarshall" />
       <CommonComments lang={lang} />
     </>
   );
 }
-

@@ -182,7 +182,7 @@ const Projects = {
       slug: "bubblesort",
       title: "Bubble Sort",
       description: "Placeholder: Bubble sort visualization",
-      image: "/logo512.png",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/bubblesort.gif",
       link: "/algorithms/bubblesort/",
     },
     {
@@ -190,7 +190,7 @@ const Projects = {
       slug: "quicksort",
       title: "Quicksort",
       description: "Placeholder: Quicksort divide-and-conquer visualization",
-      image: "/logo512.png",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/quicksort.gif",
       link: "/algorithms/quicksort/",
     },
     {
@@ -198,7 +198,7 @@ const Projects = {
       slug: "floydwarshall",
       title: "Floyd-Warshall Shortest Paths",
       description: "Placeholder: Floyd-Warshall dynamic programming visualization",
-      image: "/logo512.png",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/floyd.gif",
       link: "/algorithms/floydwarshall/",
     },
     {
@@ -206,7 +206,7 @@ const Projects = {
       slug: "factorial",
       title: "Nth Factorial",
       description: "Placeholder: Simple recursive factorial demonstration",
-      image: "/logo512.png",
+      image: "https://xiaohashu-jing.oss-cn-nanjing.aliyuncs.com/factorial.gif",
       link: "/algorithms/factorial/",
     },
   ],
