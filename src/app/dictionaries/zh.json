@@ -1087,5 +1087,19 @@
     "greedy": "贪心在每一步选择局部最优，期望得到全局较优解，常用于区间调度与图算法。",
     "simple-recursive": "简单递归通过函数自调用定义问题解法，适合结构清晰的递归问题与教学示例。",
     "data-structures": "数据结构提供组织与访问数据的方式，支撑高效算法的实现与工程实践。"
-  }
+  },
+  "nqueens_title": "N 皇后问题",
+  "nqueens_description": "使用回溯法放置 N 个皇后且互不攻击的可视化。",
+  "knightstour_title": "骑士巡游问题",
+  "knightstour_description": "回溯法可视化：骑士遍历棋盘所有格子。",
+  "depthlimitedsearch_title": "深度受限搜索",
+  "depthlimitedsearch_description": "带最大深度限制的 DFS 演示。",
+  "bubblesort_title": "冒泡排序",
+  "bubblesort_description": "基础比较交换排序的可视化演示。",
+  "quicksort_title": "快速排序",
+  "quicksort_description": "分治法排序，可视化展示基准与分区。",
+  "floydwarshall_title": "Floyd‑Warshall 全源最短路",
+  "floydwarshall_description": "全源最短路径的动态规划可视化。",
+  "factorial_title": "阶乘 (n!)",
+  "factorial_description": "递归计算阶乘的直观演示。"
 }

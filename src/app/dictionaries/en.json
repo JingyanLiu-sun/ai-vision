@@ -1087,5 +1087,19 @@
     "greedy": "Greedy makes locally optimal choices hoping for globally good solutions, often used in interval scheduling and graph algorithms.",
     "simple-recursive": "Simple Recursive defines solutions via self-calling functions, good for clear-structured recursion and educational examples.",
     "data-structures": "Data Structures organize and access data efficiently, underpinning performant algorithms and engineering practice."
-  }
+  },
+  "nqueens_title": "N-Queens Problem",
+  "nqueens_description": "Backtracking visualization for placing N queens without conflicts.",
+  "knightstour_title": "Knight's Tour Problem",
+  "knightstour_description": "Backtracking visualization for visiting all squares by knight moves.",
+  "depthlimitedsearch_title": "Depth-Limited Search",
+  "depthlimitedsearch_description": "Demonstration of DFS with a maximum depth limit.",
+  "bubblesort_title": "Bubble Sort",
+  "bubblesort_description": "Simple comparison-based sort visualization.",
+  "quicksort_title": "Quicksort",
+  "quicksort_description": "Divide-and-conquer sorting visualization with pivots.",
+  "floydwarshall_title": "Floyd-Warshall Shortest Paths",
+  "floydwarshall_description": "All-pairs shortest path dynamic programming visualization.",
+  "factorial_title": "Nth Factorial",
+  "factorial_description": "Simple recursive factorial demonstration."
 }

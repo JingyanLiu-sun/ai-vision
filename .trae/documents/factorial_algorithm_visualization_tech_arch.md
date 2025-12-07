@@ -29,24 +29,31 @@ graph TD
 
 ## 2. 技术描述
 
-- **前端框架**: Next.js 14 + React 18 + TypeScript
-- **样式方案**: Tailwind CSS 3 + CSS Modules
-- **Canvas渲染**: HTML5 Canvas 2D API + requestAnimationFrame
-- **图标库**: Lucide React
-- **国际化**: next-i18next
-- **构建工具**: Next.js内置构建系统
-- **后端**: 无，纯前端实现
+* **前端框架**: Next.js 14 + React 18 + TypeScript
+
+* **样式方案**: Tailwind CSS 3 + CSS Modules
+
+* **Canvas渲染**: HTML5 Canvas 2D API + requestAnimationFrame
+
+* **图标库**: Lucide React
+
+* **国际化**: next-i18next
+
+* **构建工具**: Next.js内置构建系统
+
+* **后端**: 无，纯前端实现
 
 ## 3. 路由定义
 
-| 路由 | 用途 |
-|------|------|
-| `/[lang]/algorithms/factorial` | 阶乘算法可视化主页面 |
+| 路由                                  | 用途         |
+| ----------------------------------- | ---------- |
+| `/[lang]/algorithms/factorial`      | 阶乘算法可视化主页面 |
 | `/[lang]/algorithms/factorial/docs` | 阶乘算法详细文档页面 |
 
 ## 4. 组件架构
 
 ### 4.1 页面组件结构
+
 ```typescript
 // page.js - 主页面组件
 interface FactorialPageProps {
@@ -57,6 +64,7 @@ interface FactorialPageProps {
 ```
 
 ### 4.2 可视化组件接口
+
 ```typescript
 // content.js - 可视化核心组件
 interface VisualizationProps {
@@ -80,6 +88,7 @@ interface CallFrame {
 ```
 
 ### 4.3 Canvas渲染接口
+
 ```typescript
 interface TreeNode {
   id: string;
@@ -124,6 +133,7 @@ graph TD
 ## 6. 核心算法实现
 
 ### 6.1 阶乘递归模拟
+
 ```typescript
 function* factorialGenerator(n: number): Generator<AnimationStep, number, void> {
   const steps: AnimationStep[] = [];
@@ -165,6 +175,7 @@ function* factorialGenerator(n: number): Generator<AnimationStep, number, void> 
 ```
 
 ### 6.2 Canvas渲染优化
+
 ```typescript
 class TreeRenderer {
   private canvas: HTMLCanvasElement;
@@ -218,15 +229,22 @@ class TreeRenderer {
 ## 7. 性能优化策略
 
 ### 7.1 渲染优化
-- **脏矩形检测**: 只重绘发生变化的区域
-- **对象池**: 重用TreeNode对象避免频繁创建销毁
-- **离屏Canvas**: 复杂图形预渲染到离屏Canvas
-- **动画节流**: 根据设备性能动态调整帧率
+
+* **脏矩形检测**: 只重绘发生变化的区域
+
+* **对象池**: 重用TreeNode对象避免频繁创建销毁
+
+* **离屏Canvas**: 复杂图形预渲染到离屏Canvas
+
+* **动画节流**: 根据设备性能动态调整帧率
 
 ### 7.2 内存管理
-- **自动清理**: 动画完成后自动清理事件监听器和定时器
-- **防抖处理**: 参数输入使用防抖避免频繁重新计算
-- **渐进式渲染**: 大数据集采用分批渲染策略
+
+* **自动清理**: 动画完成后自动清理事件监听器和定时器
+
+* **防抖处理**: 参数输入使用防抖避免频繁重新计算
+
+* **渐进式渲染**: 大数据集采用分批渲染策略
 
 ## 8. 响应式布局实现
 
@@ -254,3 +272,4 @@ function calculateLayout(containerWidth: number, containerHeight: number) {
   }
 }
 ```
+
