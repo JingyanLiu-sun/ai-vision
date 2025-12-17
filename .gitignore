@@ -3,7 +3,7 @@
 # dependencies
 /node_modules
 /.pnp
-.cache/*
+.cache/
 .pnp.js
 
 # testing
@@ -38,6 +38,7 @@ out/
 .vim/
 .cursor/
 .swc/
-.pnpm-store/*
+.pnpm-store/
 
 /src/generated/prisma
+.env

@@ -6,9 +6,9 @@ services:
     environment:
       AUTH_SECRET: "dev-secret-change-me"
       ADMIN_RESET_KEY: "admin-reset-change-me"
-      SQLITE_DB_PATH: "/data/sqlite/app.db"
+      SQLITE_DB_PATH: "/data/app.db"
     volumes:
-      - ai_gallery_db:/data/sqlite
+      - ai_gallery_db:/data
     restart: unless-stopped
 volumes:
   ai_gallery_db:

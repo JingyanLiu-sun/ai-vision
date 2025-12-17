@@ -8,13 +8,11 @@ services:
     environment:
       AUTH_SECRET: "dev-secret-change-me"
       ADMIN_RESET_KEY: "admin-reset-change-me"
-      SQLITE_DB_PATH: "/data/sqlite/app.db"
+      DATABASE_URL: "file:/data/app.db"
       NODE_ENV: "development"
       CHOKIDAR_USEPOLLING: "1"
       WATCHPACK_POLLING: "true"
     volumes:
       - .:/app
-      - ai_gallery_db:/data/sqlite
+      - ./data:/data
       - /app/node_modules
-volumes:
-  ai_gallery_db:

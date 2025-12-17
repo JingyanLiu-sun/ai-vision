@@ -53,7 +53,12 @@
 - 文件： docker-compose.dev.yml
 - 启动： docker compose -f docker-compose.dev.yml up -d
 - 查看日志： docker compose -f docker-compose.dev.yml logs -n 200 --tail=200
+- 停止： docker compose -f docker-compose.dev.yml down
 当然中间遇到任何问题，尝试去用 AI 解决吧～
+
+7.常用命令
+- 重启容器： docker compose restart
+- 查看数据库内容：npx prisma studio
 
 # 使用 AI 的感悟
 

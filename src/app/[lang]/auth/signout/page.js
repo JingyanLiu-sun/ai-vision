@@ -1,10 +1,11 @@
 "use client";
 import { useI18n } from "@/app/i18n/client";
 import { useEffect } from "react";
+import { useParams } from "next/navigation";
 
 export default function SignOutPage(props) {
-  const params = props.params || {};
-  const { lang } = params;
+  const params = useParams();
+  const lang = params?.lang || "zh";
   const { t } = useI18n();
   useEffect(() => {
     const logout = async () => {

@@ -14,8 +14,8 @@ import { I18nProvider } from "@/app/i18n/client";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from 'next/script';
 import { SpeedInsights } from "@vercel/speed-insights/next"
-// 背景控制组件（算法专区使用），此处按需引入但未使用
-import BackgroundController from "@/app/components/BackgroundController";
+export const runtime = "nodejs";
+import { getPrisma } from "@/app/lib/prisma";
 
 
 // 受支持语言列表：用于静态参数生成（SSG）与中间件校验
@@ -121,3 +121,4 @@ export default async function Layout(props) {
     </html>
   );
 }
+  getPrisma();

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
-import { findUserById, hashPassword, updateUserPasswordById } from "@/app/lib/sqlite";
+import { hashPassword } from "@/app/lib/sqlite";
+import { findUserByIdPrisma, updateUserPasswordByIdPrisma } from "@/app/lib/prisma";
 
 export async function POST(request) {
   let body;
@@ -18,13 +19,13 @@ export async function POST(request) {
   const session = await auth();
   if (!session?.user?.id) return new Response("Unauthorized", { status: 401 });
 
-  const user = await findUserById(session.user.id);
+  const user = await findUserByIdPrisma(session.user.id);
   if (!user) return new Response("User not found", { status: 404 });
   const { hash } = hashPassword(oldPassword, user.salt);
   if (hash !== user.password_hash) return new Response("Invalid credentials", { status: 401 });
 
-  const ok = await updateUserPasswordById(user.id, newPassword);
+  const { salt, hash } = hashPassword(newPassword);
+  const ok = await updateUserPasswordByIdPrisma(user.id, hash, salt);
   if (!ok) return new Response("Update failed", { status: 500 });
   return NextResponse.json({ ok: true });
 }
-

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { updateUserPasswordById, findUserByPhone } from "@/app/lib/sqlite";
+import { hashPassword } from "@/app/lib/sqlite";
+import { updateUserPasswordByIdPrisma, findUserByPhonePrisma } from "@/app/lib/prisma";
 
 export async function POST(request) {
   let body;
@@ -18,11 +19,11 @@ export async function POST(request) {
   const expected = process.env.ADMIN_RESET_KEY || "";
   if (!expected || adminKey !== expected) return new Response("Forbidden", { status: 403 });
 
-  const user = await findUserByPhone(phone);
+  const user = await findUserByPhonePrisma(phone);
   if (!user) return new Response("User not found", { status: 404 });
 
-  const ok = await updateUserPasswordById(user.id, newPassword);
+  const { salt, hash } = hashPassword(newPassword);
+  const ok = await updateUserPasswordByIdPrisma(user.id, hash, salt);
   if (!ok) return new Response("Update failed", { status: 500 });
   return NextResponse.json({ ok: true });
 }
-

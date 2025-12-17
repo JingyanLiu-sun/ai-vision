@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faCode } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { getDictionary } from "@/app/dictionaries";
-import ShareButtons from "./ShareButtons";
 
 async function PageHeader({ lang, pathname, title, docsPathname }) {
   const dict = await getDictionary(lang);

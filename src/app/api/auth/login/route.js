@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { findUserByPhone, hashPassword } from "@/app/lib/sqlite";
+import { hashPassword } from "@/app/lib/sqlite";
+import { findUserByPhonePrisma } from "@/app/lib/prisma";
 import { signJwt } from "@/app/lib/jwt";
 
 export async function POST(request) {
@@ -14,7 +15,7 @@ export async function POST(request) {
   const password = String(data?.password || "");
   if (!phone || !password) return new Response("Missing credentials", { status: 400 });
 
-  const user = await findUserByPhone(phone);
+  const user = await findUserByPhonePrisma(phone);
   if (!user) return new Response("User not found", { status: 404 });
   const { hash } = hashPassword(password, user.salt);
   if (hash !== user.password_hash) return new Response("Invalid credentials", { status: 401 });

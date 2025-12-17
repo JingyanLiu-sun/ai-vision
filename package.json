@@ -18,11 +18,14 @@
     "@giscus/react": "^3.1.0",
     "@headlessui/react": "^2.2.3",
     "@next/third-parties": "15.3.2",
+    "@prisma/adapter-better-sqlite3": "^7.1.0",
+    "@prisma/client": "^7.1.0",
     "@react-spring/web": "^10.0.0",
     "@react-three/drei": "^10.0.8",
     "@react-three/fiber": "^9.1.2",
     "@tailwindcss/typography": "^0.5.14",
     "@vercel/speed-insights": "^1.2.0",
+    "better-sqlite3": "^12.5.0",
     "clsx": "^2.1.1",
     "cookies-next": "^4.3.0",
     "crypto": "^1.0.1",
@@ -44,6 +47,7 @@
     "numfmt": "^2.5.2",
     "papaparse": "^5.4.1",
     "pizzip": "^3.1.7",
+    "prisma": "^7.1.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "reactflow": "^11.11.4",
@@ -59,8 +63,7 @@
     "unist-util-visit": "^5.0.0",
     "web-vitals": "^4.2.2",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
-    "xlsx-js-style": "^1.2.0",
-    "better-sqlite3": "^9.6.0"
+    "xlsx-js-style": "^1.2.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",

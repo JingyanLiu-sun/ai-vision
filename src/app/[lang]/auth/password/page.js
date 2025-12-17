@@ -1,10 +1,11 @@
 "use client";
 import { useState } from "react";
+import { useParams } from "next/navigation";
 import { useI18n } from "@/app/i18n/client";
 
 export default function PasswordChangePage(props) {
-  const params = props.params || {};
-  const { lang } = params;
+  const params = useParams();
+  const lang = params?.lang || "zh";
   const { t } = useI18n();
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -53,4 +54,3 @@ export default function PasswordChangePage(props) {
     </div>
   );
 }
-
