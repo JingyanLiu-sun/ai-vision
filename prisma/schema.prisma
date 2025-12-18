@@ -12,5 +12,9 @@ model users {
   phone         String   @unique
   password_hash String
   salt          String
+  name          String?
+  email         String?
+  image         String?
+  bio           String?
   created_at    DateTime @default(now())
 }
