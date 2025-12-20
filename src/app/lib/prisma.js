@@ -1,4 +1,4 @@
-import { PrismaClient } from "@/generated/prisma";
+import { PrismaClient } from "@/generated/prisma/client";
 import Database from "better-sqlite3";
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 import path from "path";
@@ -9,7 +9,7 @@ function getSqliteUrl() {
   const raw = String(process.env.DATABASE_URL || "").trim();
   // Remove 'file:' prefix for better-sqlite3
   if (raw.startsWith("file:")) {
-      return raw.slice(5);
+    return raw.slice(5);
   }
   const p = String(process.env.SQLITE_DB_PATH || "").trim();
   if (p) return p;
@@ -18,10 +18,15 @@ function getSqliteUrl() {
 
 export function getPrisma() {
   if (!prismaInstance) {
-    const dbPath = getSqliteUrl();
-    const db = new Database(dbPath);
-    const adapter = new PrismaBetterSqlite3(db);
-    prismaInstance = new PrismaClient({ adapter });
+    try {
+      const dbPath = getSqliteUrl();
+      const db = new Database(dbPath);
+      const adapter = new PrismaBetterSqlite3(db);
+      prismaInstance = new PrismaClient({ adapter });
+    } catch (error) {
+      console.error("Failed to initialize Prisma with adapter, falling back to default:", error);
+      prismaInstance = new PrismaClient();
+    }
   }
   return prismaInstance;
 }

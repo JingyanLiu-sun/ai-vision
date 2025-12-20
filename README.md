@@ -52,7 +52,7 @@
 - 适合快速在容器里跑 pnpm install 和 pnpm dev ，同时使用持久卷存储 SQLite。
 - 文件： docker-compose.dev.yml
 - 启动： docker compose -f docker-compose.dev.yml up -d
-- 查看日志： docker compose -f docker-compose.dev.yml logs -n 200 --tail=200
+- 查看日志： docker compose -f docker-compose.dev.yml logs -n 20 --tail=20
 - 停止： docker compose -f docker-compose.dev.yml down
 当然中间遇到任何问题，尝试去用 AI 解决吧～
 

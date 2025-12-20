@@ -20,13 +20,17 @@ export default async function ProfilePage({ params }) {
       phone: session.user.phone, // Assuming phone is used as unique identifier in auth
     },
   });
+  
+  // Serialize user object to simple JSON to avoid passing complex objects (like Date) to client components
+  // which can cause issues with React Server Components serialization
+  const serializedUser = user ? JSON.parse(JSON.stringify(user)) : null;
 
   return (
     <div className="max-w-2xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
       <h1 className="text-2xl font-bold mb-6 text-gray-900">个人信息</h1>
       <div className="bg-white shadow overflow-hidden sm:rounded-lg">
         <div className="px-4 py-5 sm:p-6">
-          <ProfileForm user={user} lang={lang} />
+          <ProfileForm user={serializedUser} lang={lang} />
         </div>
       </div>
     </div>
